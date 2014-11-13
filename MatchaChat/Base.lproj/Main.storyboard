@@ -16,19 +16,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6bY-X2-5qy" userLabel="Login View">
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6bY-X2-5qy" userLabel="Login View">
                                 <rect key="frame" x="150" y="150" width="300" height="300"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n8a-or-7Sp">
                                         <rect key="frame" x="184" y="255" width="32" height="32"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <state key="normal" title="注册">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pts-aC-gsc">
                                         <rect key="frame" x="84" y="255" width="32" height="32"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <state key="normal" title="登录">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -70,7 +70,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.63921568630000003" green="0.81176470590000005" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="OTG-Iv-zed" secondAttribute="centerX" id="5dt-q4-JlI"/>
                                     <constraint firstItem="Pts-aC-gsc" firstAttribute="top" secondItem="5Nu-fz-QRs" secondAttribute="bottom" constant="40" id="Az6-jw-i9v"/>
@@ -93,7 +92,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.63921568630000003" green="0.81176470590000005" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="6bY-X2-5qy" secondAttribute="centerX" id="akk-uv-LCt"/>
                             <constraint firstAttribute="centerY" secondItem="6bY-X2-5qy" secondAttribute="centerY" id="r1F-bT-Qvm"/>
@@ -102,6 +101,7 @@
                     <connections>
                         <outlet property="accountTextField" destination="Xls-oa-G16" id="fyl-ni-qRZ"/>
                         <outlet property="errorMessageTextField" destination="SSu-On-Iox" id="mls-lp-ofe"/>
+                        <outlet property="loginView" destination="6bY-X2-5qy" id="wTO-k3-Hr4"/>
                         <outlet property="passwordTextField" destination="OTG-Iv-zed" id="iz0-Ml-hl8"/>
                         <outlet property="serverNameTextField" destination="5Nu-fz-QRs" id="FqO-6q-B5L"/>
                     </connections>

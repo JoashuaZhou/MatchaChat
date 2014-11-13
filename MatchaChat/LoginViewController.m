@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *serverNameTextField;
 @property (weak, nonatomic) IBOutlet UILabel *errorMessageTextField;
+@property (weak, nonatomic) IBOutlet UIView *loginView;
 
 @end
 
@@ -30,8 +31,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setupUI];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)setupUI
+{
+    UILabel *loginLabel = [[UILabel alloc] init];
+    loginLabel.bounds = CGRectMake(0, 0, 260, 80);
+    loginLabel.center = self.view.center;
+    [loginLabel setText:@"Matcha Chat"];
+    [loginLabel setTextColor:[UIColor whiteColor]];
+    loginLabel.font = [UIFont fontWithName:@"Party LET" size:70.0];
+    [self.view addSubview:loginLabel];
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        loginLabel.transform = CGAffineTransformMakeTranslation(0, -130);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.loginView.alpha = 1.0;
+        }];
+    }];
 }
 
 - (IBAction)login {
