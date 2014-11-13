@@ -59,6 +59,7 @@
 		42126AFB1A14813500B14BB4 /* XMPPStringPrep.m in Sources */ = {isa = PBXBuildFile; fileRef = 42126AF31A14813500B14BB4 /* XMPPStringPrep.m */; };
 		42126AFC1A14813500B14BB4 /* XMPPTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 42126AF51A14813500B14BB4 /* XMPPTimer.m */; };
 		42126AFE1A14815300B14BB4 /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 42126AFD1A14815300B14BB4 /* libresolv.dylib */; };
+		42126B021A149BBF00B14BB4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42126B011A149BBF00B14BB4 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,6 +180,8 @@
 		42126AF51A14813500B14BB4 /* XMPPTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPTimer.m; sourceTree = "<group>"; };
 		42126AFD1A14815300B14BB4 /* libresolv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.dylib; path = usr/lib/libresolv.dylib; sourceTree = SDKROOT; };
 		42126AFF1A14816A00B14BB4 /* XMPPFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPFramework.h; sourceTree = "<group>"; };
+		42126B001A149BBF00B14BB4 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		42126B011A149BBF00B14BB4 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +232,8 @@
 				42126A3A1A1464BF00B14BB4 /* AppDelegate.h */,
 				42126A3B1A1464BF00B14BB4 /* AppDelegate.m */,
 				42126A401A1464BF00B14BB4 /* Main.storyboard */,
+				42126B001A149BBF00B14BB4 /* LoginViewController.h */,
+				42126B011A149BBF00B14BB4 /* LoginViewController.m */,
 				42126A431A1464BF00B14BB4 /* Images.xcassets */,
 				42126A451A1464BF00B14BB4 /* LaunchScreen.xib */,
 				42126A361A1464BF00B14BB4 /* Supporting Files */,
@@ -667,6 +672,7 @@
 				42126A391A1464BF00B14BB4 /* main.m in Sources */,
 				42126A731A147E8300B14BB4 /* DDAbstractDatabaseLogger.m in Sources */,
 				42126AE41A14812B00B14BB4 /* XMPPParser.m in Sources */,
+				42126B021A149BBF00B14BB4 /* LoginViewController.m in Sources */,
 				42126A771A147E8300B14BB4 /* DDTTYLogger.m in Sources */,
 				42126AC81A14811E00B14BB4 /* NSData+XMPP.m in Sources */,
 				42126A7F1A147F8900B14BB4 /* GCDAsyncSocket.m in Sources */,

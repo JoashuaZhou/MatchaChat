@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,8 +15,85 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6bY-X2-5qy" userLabel="Login View">
+                                <rect key="frame" x="150" y="150" width="300" height="300"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n8a-or-7Sp">
+                                        <rect key="frame" x="184" y="247" width="32" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="注册">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="账号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xls-oa-G16">
+                                        <rect key="frame" x="40" y="85" width="220" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="8ex-sP-3ce"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OTG-Iv-zed">
+                                        <rect key="frame" x="40" y="135" width="220" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="220" id="dwR-ZZ-d71"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="XoC-9z-NkJ"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="服务器名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Nu-fz-QRs">
+                                        <rect key="frame" x="40" y="185" width="220" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="3Bl-6l-5GK"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pts-aC-gsc">
+                                        <rect key="frame" x="84" y="247" width="32" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="登录">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="login" destination="BYZ-38-t0r" eventType="touchUpInside" id="fQN-Oi-Yee"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.63921568630000003" green="0.81176470590000005" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="OTG-Iv-zed" secondAttribute="centerX" id="5dt-q4-JlI"/>
+                                    <constraint firstItem="Pts-aC-gsc" firstAttribute="top" secondItem="5Nu-fz-QRs" secondAttribute="bottom" constant="32" id="Az6-jw-i9v"/>
+                                    <constraint firstItem="Xls-oa-G16" firstAttribute="trailing" secondItem="OTG-Iv-zed" secondAttribute="trailing" id="CeH-Lt-aJG"/>
+                                    <constraint firstItem="OTG-Iv-zed" firstAttribute="top" secondItem="Xls-oa-G16" secondAttribute="bottom" constant="20" id="Cek-Zm-Ghs"/>
+                                    <constraint firstItem="Xls-oa-G16" firstAttribute="leading" secondItem="OTG-Iv-zed" secondAttribute="leading" id="IpG-OU-YhT"/>
+                                    <constraint firstItem="5Nu-fz-QRs" firstAttribute="top" secondItem="OTG-Iv-zed" secondAttribute="bottom" constant="20" id="JY4-9S-fYX"/>
+                                    <constraint firstItem="Xls-oa-G16" firstAttribute="trailing" secondItem="5Nu-fz-QRs" secondAttribute="trailing" id="TQO-1I-l5c"/>
+                                    <constraint firstItem="Xls-oa-G16" firstAttribute="leading" secondItem="5Nu-fz-QRs" secondAttribute="leading" id="We7-BO-yee"/>
+                                    <constraint firstItem="Pts-aC-gsc" firstAttribute="baseline" secondItem="n8a-or-7Sp" secondAttribute="baseline" id="Xnk-WU-iJU"/>
+                                    <constraint firstItem="n8a-or-7Sp" firstAttribute="centerX" secondItem="6bY-X2-5qy" secondAttribute="centerX" constant="50" id="Z1n-zM-kIq"/>
+                                    <constraint firstAttribute="height" constant="300" id="eeK-EH-D0f"/>
+                                    <constraint firstAttribute="width" constant="300" id="lSl-Yj-Tn7"/>
+                                    <constraint firstAttribute="centerY" secondItem="OTG-Iv-zed" secondAttribute="centerY" id="wLv-zp-ZK8"/>
+                                    <constraint firstAttribute="centerX" secondItem="Pts-aC-gsc" secondAttribute="centerX" constant="50" id="y9a-LY-gj5"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="6bY-X2-5qy" secondAttribute="centerX" id="akk-uv-LCt"/>
+                            <constraint firstAttribute="centerY" secondItem="6bY-X2-5qy" secondAttribute="centerY" id="r1F-bT-Qvm"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="accountTextField" destination="Xls-oa-G16" id="fyl-ni-qRZ"/>
+                        <outlet property="passwordTextField" destination="OTG-Iv-zed" id="iz0-Ml-hl8"/>
+                        <outlet property="serverNameTextField" destination="5Nu-fz-QRs" id="FqO-6q-B5L"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
