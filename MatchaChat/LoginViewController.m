@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *accountTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *serverNameTextField;
+@property (weak, nonatomic) IBOutlet UILabel *errorMessageTextField;
 
 @end
 
@@ -36,15 +37,27 @@
 - (IBAction)login {
     
     if ([self.accountTextField.text isEqualToString:@""] || [self.passwordTextField.text isEqualToString:@""] || [self.serverNameTextField.text isEqualToString:@""]) {
-        NSLog(@"登录信息不完整");
+        [self showErrorMessage];
         return;
     }
     
     [[self appDelegate] connectWithAccountName:self.accountTextField.text Password:self.passwordTextField.text ServerName:self.serverNameTextField.text Success:^{
         NSLog(@"登陆成功");
     } Failure:^{
-        NSLog(@"登录失败");
+        [self showErrorMessage];
     }];
+}
+
+- (void)showErrorMessage
+{
+    self.errorMessageTextField.hidden = NO;
+    
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
+    animation.keyPath = @"transform.translation.x";
+    animation.values = @[@(-8), @(0), @(-8)];
+    animation.repeatCount = 5;
+    animation.duration = 0.1;
+    [self.errorMessageTextField.layer addAnimation:animation forKey:nil];
 }
 
 #pragma mark - 通知中心 & 键盘弹出处理

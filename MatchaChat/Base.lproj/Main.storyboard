@@ -20,11 +20,21 @@
                                 <rect key="frame" x="150" y="150" width="300" height="300"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n8a-or-7Sp">
-                                        <rect key="frame" x="184" y="247" width="32" height="32"/>
+                                        <rect key="frame" x="184" y="255" width="32" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="注册">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pts-aC-gsc">
+                                        <rect key="frame" x="84" y="255" width="32" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="登录">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="login" destination="BYZ-38-t0r" eventType="touchUpInside" id="fQN-Oi-Yee"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="账号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xls-oa-G16">
                                         <rect key="frame" x="40" y="85" width="220" height="30"/>
@@ -53,32 +63,32 @@
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="3Bl-6l-5GK"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pts-aC-gsc">
-                                        <rect key="frame" x="84" y="247" width="32" height="32"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <state key="normal" title="登录">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="login" destination="BYZ-38-t0r" eventType="touchUpInside" id="fQN-Oi-Yee"/>
-                                        </connections>
-                                    </button>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✕ 登陆信息错误，登录失败" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSu-On-Iox">
+                                        <rect key="frame" x="40" y="223" width="220" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.63921568630000003" green="0.81176470590000005" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="OTG-Iv-zed" secondAttribute="centerX" id="5dt-q4-JlI"/>
-                                    <constraint firstItem="Pts-aC-gsc" firstAttribute="top" secondItem="5Nu-fz-QRs" secondAttribute="bottom" constant="32" id="Az6-jw-i9v"/>
+                                    <constraint firstItem="Pts-aC-gsc" firstAttribute="top" secondItem="5Nu-fz-QRs" secondAttribute="bottom" constant="40" id="Az6-jw-i9v"/>
                                     <constraint firstItem="Xls-oa-G16" firstAttribute="trailing" secondItem="OTG-Iv-zed" secondAttribute="trailing" id="CeH-Lt-aJG"/>
                                     <constraint firstItem="OTG-Iv-zed" firstAttribute="top" secondItem="Xls-oa-G16" secondAttribute="bottom" constant="20" id="Cek-Zm-Ghs"/>
+                                    <constraint firstItem="SSu-On-Iox" firstAttribute="top" secondItem="5Nu-fz-QRs" secondAttribute="bottom" constant="8" id="I4Q-0H-zmg"/>
                                     <constraint firstItem="Xls-oa-G16" firstAttribute="leading" secondItem="OTG-Iv-zed" secondAttribute="leading" id="IpG-OU-YhT"/>
                                     <constraint firstItem="5Nu-fz-QRs" firstAttribute="top" secondItem="OTG-Iv-zed" secondAttribute="bottom" constant="20" id="JY4-9S-fYX"/>
                                     <constraint firstItem="Xls-oa-G16" firstAttribute="trailing" secondItem="5Nu-fz-QRs" secondAttribute="trailing" id="TQO-1I-l5c"/>
                                     <constraint firstItem="Xls-oa-G16" firstAttribute="leading" secondItem="5Nu-fz-QRs" secondAttribute="leading" id="We7-BO-yee"/>
+                                    <constraint firstItem="OTG-Iv-zed" firstAttribute="trailing" secondItem="SSu-On-Iox" secondAttribute="trailing" id="XCj-yF-GaO"/>
                                     <constraint firstItem="Pts-aC-gsc" firstAttribute="baseline" secondItem="n8a-or-7Sp" secondAttribute="baseline" id="Xnk-WU-iJU"/>
                                     <constraint firstItem="n8a-or-7Sp" firstAttribute="centerX" secondItem="6bY-X2-5qy" secondAttribute="centerX" constant="50" id="Z1n-zM-kIq"/>
+                                    <constraint firstItem="OTG-Iv-zed" firstAttribute="leading" secondItem="SSu-On-Iox" secondAttribute="leading" id="dle-ur-wj4"/>
                                     <constraint firstAttribute="height" constant="300" id="eeK-EH-D0f"/>
                                     <constraint firstAttribute="width" constant="300" id="lSl-Yj-Tn7"/>
                                     <constraint firstAttribute="centerY" secondItem="OTG-Iv-zed" secondAttribute="centerY" id="wLv-zp-ZK8"/>
+                                    <constraint firstItem="Pts-aC-gsc" firstAttribute="top" secondItem="SSu-On-Iox" secondAttribute="bottom" constant="11" id="xiB-6W-cWL"/>
                                     <constraint firstAttribute="centerX" secondItem="Pts-aC-gsc" secondAttribute="centerX" constant="50" id="y9a-LY-gj5"/>
                                 </constraints>
                             </view>
@@ -91,6 +101,7 @@
                     </view>
                     <connections>
                         <outlet property="accountTextField" destination="Xls-oa-G16" id="fyl-ni-qRZ"/>
+                        <outlet property="errorMessageTextField" destination="SSu-On-Iox" id="mls-lp-ofe"/>
                         <outlet property="passwordTextField" destination="OTG-Iv-zed" id="iz0-Ml-hl8"/>
                         <outlet property="serverNameTextField" destination="5Nu-fz-QRs" id="FqO-6q-B5L"/>
                     </connections>
