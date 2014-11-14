@@ -60,6 +60,8 @@
 		42126AFC1A14813500B14BB4 /* XMPPTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 42126AF51A14813500B14BB4 /* XMPPTimer.m */; };
 		42126AFE1A14815300B14BB4 /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 42126AFD1A14815300B14BB4 /* libresolv.dylib */; };
 		42126B021A149BBF00B14BB4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42126B011A149BBF00B14BB4 /* LoginViewController.m */; };
+		42316A011A162B1C003E58AF /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42316A001A162B1C003E58AF /* NavigationController.m */; };
+		42316A071A162DD2003E58AF /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42316A061A162DD2003E58AF /* TabBarViewController.m */; };
 		42A6C3CD1A15F3D500465725 /* XMPPBandwidthMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A6C2D91A15F3D500465725 /* XMPPBandwidthMonitor.m */; };
 		42A6C3CE1A15F3D500465725 /* XMPPCoreDataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A6C2DC1A15F3D500465725 /* XMPPCoreDataStorage.m */; };
 		42A6C3CF1A15F3D500465725 /* XMPPGoogleSharedStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A6C2E01A15F3D500465725 /* XMPPGoogleSharedStatus.m */; };
@@ -278,6 +280,10 @@
 		42126AFF1A14816A00B14BB4 /* XMPPFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPFramework.h; sourceTree = "<group>"; };
 		42126B001A149BBF00B14BB4 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		42126B011A149BBF00B14BB4 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		423169FF1A162B1C003E58AF /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
+		42316A001A162B1C003E58AF /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
+		42316A051A162DD2003E58AF /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
+		42316A061A162DD2003E58AF /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
 		42A6C2D81A15F3D500465725 /* XMPPBandwidthMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPBandwidthMonitor.h; sourceTree = "<group>"; };
 		42A6C2D91A15F3D500465725 /* XMPPBandwidthMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPBandwidthMonitor.m; sourceTree = "<group>"; };
 		42A6C2DB1A15F3D500465725 /* XMPPCoreDataStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPCoreDataStorage.h; sourceTree = "<group>"; };
@@ -518,13 +524,12 @@
 		42126A351A1464BF00B14BB4 /* MatchaChat */ = {
 			isa = PBXGroup;
 			children = (
+				42316A081A1647BD003E58AF /* Other */,
+				4248BCC71A16271900C75008 /* Login */,
 				42126A5C1A1464E500B14BB4 /* Libs */,
 				42126A3A1A1464BF00B14BB4 /* AppDelegate.h */,
 				42126A3B1A1464BF00B14BB4 /* AppDelegate.m */,
 				42126A401A1464BF00B14BB4 /* Main.storyboard */,
-				42126B001A149BBF00B14BB4 /* LoginViewController.h */,
-				42126B011A149BBF00B14BB4 /* LoginViewController.m */,
-				42A6C42C1A15FE1E00465725 /* LoginViewControllerView.xib */,
 				42126A431A1464BF00B14BB4 /* Images.xcassets */,
 				42126A451A1464BF00B14BB4 /* LaunchScreen.xib */,
 				42126A361A1464BF00B14BB4 /* Supporting Files */,
@@ -828,6 +833,27 @@
 				42126AF51A14813500B14BB4 /* XMPPTimer.m */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		42316A081A1647BD003E58AF /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				423169FF1A162B1C003E58AF /* NavigationController.h */,
+				42316A001A162B1C003E58AF /* NavigationController.m */,
+				42316A051A162DD2003E58AF /* TabBarViewController.h */,
+				42316A061A162DD2003E58AF /* TabBarViewController.m */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		4248BCC71A16271900C75008 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				42126B001A149BBF00B14BB4 /* LoginViewController.h */,
+				42126B011A149BBF00B14BB4 /* LoginViewController.m */,
+				42A6C42C1A15FE1E00465725 /* LoginViewControllerView.xib */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 		42A6C2D61A15F3D500465725 /* Extensions */ = {
@@ -1643,11 +1669,13 @@
 				42A6C3CF1A15F3D500465725 /* XMPPGoogleSharedStatus.m in Sources */,
 				42A6C42A1A15F3D500465725 /* XMPPMessage+XEP_0333.m in Sources */,
 				42126AF91A14813500B14BB4 /* XMPPIDTracker.m in Sources */,
+				42316A071A162DD2003E58AF /* TabBarViewController.m in Sources */,
 				42A6C41F1A15F3D500465725 /* XMPPPing.m in Sources */,
 				42A6C40B1A15F3D500465725 /* XMPPCapabilities.xcdatamodel in Sources */,
 				42A6C3F11A15F3D500465725 /* XMPPvCardAvatarCoreDataStorageObject.m in Sources */,
 				42A6C4001A15F3D500465725 /* XMPPPubSub.m in Sources */,
 				42126ABE1A14810D00B14BB4 /* XMPPSCRAMSHA1Authentication.m in Sources */,
+				42316A011A162B1C003E58AF /* NavigationController.m in Sources */,
 				42A6C3D01A15F3D500465725 /* XMPPProcessOne.m in Sources */,
 				42A6C3F71A15F3D500465725 /* XMPPvCardTempAdrTypes.m in Sources */,
 				42126ABF1A14810D00B14BB4 /* XMPPXFacebookPlatformAuthentication.m in Sources */,

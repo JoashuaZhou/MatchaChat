@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--联系人-->
         <scene sceneID="OCf-pj-XV7">
             <objects>
                 <viewController id="dTh-Aq-ubZ" sceneMemberID="viewController">
@@ -17,13 +17,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="iFr-lj-iRt"/>
+                    <navigationItem key="navigationItem" title="联系人" id="iFr-lj-iRt"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GrH-We-mxm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2315" y="-64"/>
         </scene>
-        <!--View Controller-->
+        <!--我-->
         <scene sceneID="s3X-yB-Hbp">
             <objects>
                 <viewController id="uJU-vn-HiK" sceneMemberID="viewController">
@@ -36,13 +36,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="oMY-6h-Idi"/>
+                    <navigationItem key="navigationItem" title="我" id="oMY-6h-Idi"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rY1-65-TWb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2310" y="672"/>
         </scene>
-        <!--View Controller-->
+        <!--吉吉的轨迹-->
         <scene sceneID="9Gf-jh-KBi">
             <objects>
                 <viewController id="Cca-KZ-l7p" sceneMemberID="viewController">
@@ -55,16 +55,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Xwi-qI-AtS"/>
+                    <navigationItem key="navigationItem" title="吉吉的轨迹" id="Xwi-qI-AtS"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="brH-Q4-sRo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2315" y="-724"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="bu6-sg-s8u">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarController" id="jug-gK-XNk" sceneMemberID="viewController">
+                <tabBarController id="jug-gK-XNk" customClass="TabBarViewController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="GZY-ox-7ak">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -81,11 +81,11 @@
             </objects>
             <point key="canvasLocation" x="455" y="34"/>
         </scene>
-        <!--Item 1-->
+        <!--聊天-->
         <scene sceneID="F6A-PW-398">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GTr-Hf-hKg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="67f-XZ-yyx"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GTr-Hf-hKg" customClass="NavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="聊天" id="67f-XZ-yyx"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="otw-eH-hEZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -100,11 +100,11 @@
             </objects>
             <point key="canvasLocation" x="1503" y="-724"/>
         </scene>
-        <!--Item 2-->
+        <!--联系人-->
         <scene sceneID="FYK-PF-G1N">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bk1-ww-Tml" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="Ybi-bi-Wc7"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bk1-ww-Tml" customClass="NavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="联系人" id="Ybi-bi-Wc7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rXn-tg-bcg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -119,11 +119,11 @@
             </objects>
             <point key="canvasLocation" x="1503" y="-64"/>
         </scene>
-        <!--Item-->
+        <!--我-->
         <scene sceneID="xFb-nC-Qbg">
             <objects>
-                <navigationController id="mcT-kp-Iyg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="9qJ-49-RxD"/>
+                <navigationController id="mcT-kp-Iyg" customClass="NavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="我" id="9qJ-49-RxD"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tp3-Px-jwR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
