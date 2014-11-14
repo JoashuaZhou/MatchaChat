@@ -67,15 +67,27 @@
         NSLog(@"%@", message);
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         UITabBarController *tabBarController = [storyboard instantiateInitialViewController];
+        [self.view insertSubview:tabBarController.view belowSubview:self.view]; // 先弄个tabbarController.view在本控制器是为了切换时动画的连续，不然可能不连续，因为我们直接把tabbarController设为window.rootViewController了
         // 两个viewController切换时使用转场动画
-        [UIView transitionFromView:self.view toView:tabBarController.view duration:1.0 options:UIViewAnimationOptionTransitionCurlUp completion:^(BOOL finished) {
+        [UIView transitionFromView:self.view toView:tabBarController.view duration:1.2 options:UIViewAnimationOptionTransitionCurlUp completion:^(BOOL finished) {
             [[self appDelegate].window setRootViewController:tabBarController];
         }];
+//        CATransition *animation = [CATransition animation];
+//        animation.type = @"rippleEffect";
+//        animation.duration = 5.0;
+//        animation.delegate = self;
+//        [self.view.layer addAnimation:animation forKey:nil];
     } Failure:^(NSString *message) {
         [self showErrorMessage];
     }];
 }
 
+//- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+//{
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    UITabBarController *tabBarController = [storyboard instantiateInitialViewController];
+//    [[self appDelegate].window setRootViewController:tabBarController];
+//}
 
 - (void)showErrorMessage
 {
