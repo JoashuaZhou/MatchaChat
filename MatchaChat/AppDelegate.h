@@ -15,6 +15,7 @@ typedef void(^CompletionBlock)(NSString *message);  // 定义一个block
 @property (strong, nonatomic) UIWindow *window;
 
 @property (nonatomic, strong, readonly) XMPPStream *xmppStream; // 设为readonly以只供自己修改
+@property (nonatomic, strong, readonly) XMPPReconnect *xmppReconnect;
 
 @property (nonatomic, assign, getter=isRegistered) BOOL registration;
 
