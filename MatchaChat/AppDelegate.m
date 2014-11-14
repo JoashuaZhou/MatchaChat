@@ -20,15 +20,16 @@
 #pragma mark - AppDelegate方法
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    application.statusBarStyle = UIStatusBarStyleLightContent;
     return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-//    [self disconnectFromServer];
+    [self disconnectFromServer];    // 重要：如果你不disconnect，再次connect就会连接不上！
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    [self connectToServer];
+//    [self connectToServer];
 //    [self connectWithAccountName:@"joshua" Password:@"123456" ServerName:@"xxx" Success:nil Failure:nil];
 }
 
@@ -63,7 +64,6 @@
     // 4. 连接
     NSError *error = nil;
     [_xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:&error];
-    
     if (error) {
         NSLog(@"连接失败: %@", error.localizedDescription);
     }
@@ -89,7 +89,12 @@
     NSString *password = @"123456";     // 在这里才需要密码
     
     // 验证密码
-    [_xmppStream authenticateWithPassword:password error:nil];
+    NSError *error = nil;
+    [_xmppStream authenticateWithPassword:password error:&error];
+    
+    if (error) {
+        NSLog(@"%@", error.localizedDescription);
+    }
 }
 
 - (void)xmppStreamDidAuthenticate:(XMPPStream *)sender
