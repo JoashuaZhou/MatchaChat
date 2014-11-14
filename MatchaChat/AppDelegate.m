@@ -21,6 +21,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     application.statusBarStyle = UIStatusBarStyleLightContent;
+    
+    // 1. 创建XMPPStream
+    [self setupXMPPStream];     // 整个app生命周期，XMPPStream就应该只被实例化一次
     return YES;
 }
 
@@ -137,9 +140,6 @@
 #pragma mark - 公有方法
 - (void)connectWithAccountName:(NSString *)accountName Password:(NSString *)password ServerName:(NSString *)serverName Success:(CompletionBlock)success Failure:(CompletionBlock)failure
 {
-    // 1. 创建XMPPStream
-    [self setupXMPPStream];
-    
     // 2. 获取账号、服务器名称(连接成功才需要密码，用于验证)
 //    NSString *accountName = @"joshua@joshuas-macbook-pro.local";
 //    NSString *hostName = @"joshuas-macbook-pro.local";
