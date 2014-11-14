@@ -65,6 +65,12 @@
     
     [[self appDelegate] connectWithAccountName:self.accountTextField.text Password:self.passwordTextField.text ServerName:self.serverNameTextField.text Success:^(NSString *message) {
         NSLog(@"%@", message);
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UITabBarController *tabBarController = [storyboard instantiateInitialViewController];
+        // 两个viewController切换时使用转场动画
+        [UIView transitionFromView:self.view toView:tabBarController.view duration:1.0 options:UIViewAnimationOptionTransitionCurlUp completion:^(BOOL finished) {
+            [[self appDelegate].window setRootViewController:tabBarController];
+        }];
     } Failure:^(NSString *message) {
         [self showErrorMessage];
     }];
