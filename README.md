@@ -1,7 +1,7 @@
 MatchaChat
 ==========
 
-An instant message application, based on XMPP
+An instant message iOS application, based on XMPP
 
 
 There are things to notice if you try to run this application:
