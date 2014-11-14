@@ -28,8 +28,13 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-//    [self connectToServer];
+    [self connectToServer];
 //    [self connectWithAccountName:@"joshua" Password:@"123456" ServerName:@"xxx" Success:nil Failure:nil];
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+    [self disconnectFromServer];
 }
 
 #pragma mark - XMPP相关方法
@@ -99,14 +104,29 @@
     // 2. 发送在线状态
     [_xmppStream sendElement:presence];
     
-    self.success();
+    self.success(@"密码认证成功！");
 }
 
 - (void)xmppStream:(XMPPStream *)sender didNotAuthenticate:(DDXMLElement *)error
 {
     NSLog(@"密码验证失败");
     
-    self.failure();
+    self.failure(@"密码错误！");
+}
+
+- (void)xmppStreamDidRegister:(XMPPStream *)sender
+{
+    self.registration = NO;
+    
+    // 注册完后自动帮用户登录
+    [_xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:nil];
+}
+
+- (void)xmppStream:(XMPPStream *)sender didNotRegister:(DDXMLElement *)error
+{
+    self.registration = NO;
+    
+    self.failure(@"账户注册失败！");
 }
 
 #pragma mark - 公有方法
@@ -125,8 +145,12 @@
     [_xmppStream setMyJID:[XMPPJID jidWithString:accountName]];
     [_xmppStream setHostName:serverName];
     
-    // 4. 连接
-    [_xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:nil];
+    // 4. 连接 或 注册
+    if (!self.isRegistered) {
+        [_xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:nil];
+    } else {
+        [_xmppStream registerWithPassword:@"123456" error:nil];
+    }
     
     self.success = success;
     self.failure = failure;

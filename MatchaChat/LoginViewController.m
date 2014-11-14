@@ -56,19 +56,21 @@
     }];
 }
 
-- (IBAction)login {
-    
+- (IBAction)loginOrRegister:(UIButton *)sender {
     if ([self.accountTextField.text isEqualToString:@""] || [self.passwordTextField.text isEqualToString:@""] || [self.serverNameTextField.text isEqualToString:@""]) {
         [self showErrorMessage];
         return;
     }
     
-    [[self appDelegate] connectWithAccountName:self.accountTextField.text Password:self.passwordTextField.text ServerName:self.serverNameTextField.text Success:^{
-        NSLog(@"登陆成功");
-    } Failure:^{
+    [self appDelegate].registration = sender.tag ? YES : NO;
+    
+    [[self appDelegate] connectWithAccountName:self.accountTextField.text Password:self.passwordTextField.text ServerName:self.serverNameTextField.text Success:^(NSString *message) {
+        NSLog(@"%@", message);
+    } Failure:^(NSString *message) {
         [self showErrorMessage];
     }];
 }
+
 
 - (void)showErrorMessage
 {
