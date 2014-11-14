@@ -155,6 +155,7 @@
 		42A6C4291A15F3D500465725 /* XMPPMessage+XEP_0308.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A6C3C61A15F3D500465725 /* XMPPMessage+XEP_0308.m */; };
 		42A6C42A1A15F3D500465725 /* XMPPMessage+XEP_0333.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A6C3C91A15F3D500465725 /* XMPPMessage+XEP_0333.m */; };
 		42A6C42B1A15F3D500465725 /* NSXMLElement+XEP_0335.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A6C3CC1A15F3D500465725 /* NSXMLElement+XEP_0335.m */; };
+		42A6C42D1A15FE1E00465725 /* LoginViewControllerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42A6C42C1A15FE1E00465725 /* LoginViewControllerView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -470,6 +471,7 @@
 		42A6C3C91A15F3D500465725 /* XMPPMessage+XEP_0333.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XMPPMessage+XEP_0333.m"; sourceTree = "<group>"; };
 		42A6C3CB1A15F3D500465725 /* NSXMLElement+XEP_0335.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSXMLElement+XEP_0335.h"; sourceTree = "<group>"; };
 		42A6C3CC1A15F3D500465725 /* NSXMLElement+XEP_0335.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSXMLElement+XEP_0335.m"; sourceTree = "<group>"; };
+		42A6C42C1A15FE1E00465725 /* LoginViewControllerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewControllerView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -522,6 +524,7 @@
 				42126A401A1464BF00B14BB4 /* Main.storyboard */,
 				42126B001A149BBF00B14BB4 /* LoginViewController.h */,
 				42126B011A149BBF00B14BB4 /* LoginViewController.m */,
+				42A6C42C1A15FE1E00465725 /* LoginViewControllerView.xib */,
 				42126A431A1464BF00B14BB4 /* Images.xcassets */,
 				42126A451A1464BF00B14BB4 /* LaunchScreen.xib */,
 				42126A361A1464BF00B14BB4 /* Supporting Files */,
@@ -1504,6 +1507,7 @@
 				42126A471A1464BF00B14BB4 /* LaunchScreen.xib in Resources */,
 				42126A7B1A147E8300B14BB4 /* README.txt in Resources */,
 				42126A441A1464BF00B14BB4 /* Images.xcassets in Resources */,
+				42A6C42D1A15FE1E00465725 /* LoginViewControllerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

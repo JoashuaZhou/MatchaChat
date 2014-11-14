@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *serverNameTextField;
 @property (weak, nonatomic) IBOutlet UILabel *errorMessageTextField;
 @property (weak, nonatomic) IBOutlet UIView *loginView;
+@property (weak, nonatomic) IBOutlet UILabel *logoTextField;
+@property (weak, nonatomic) IBOutlet UILabel *declarationTextField;
 
 @end
 
@@ -39,19 +41,16 @@
 
 - (void)setupUI
 {
-    UILabel *loginLabel = [[UILabel alloc] init];
-    loginLabel.bounds = CGRectMake(0, 0, 260, 80);
-    loginLabel.center = self.view.center;
-    [loginLabel setText:@"Matcha Chat"];
-    [loginLabel setTextColor:[UIColor whiteColor]];
-    loginLabel.font = [UIFont fontWithName:@"Party LET" size:70.0];
-    [self.view addSubview:loginLabel];
-    
     [UIView animateWithDuration:1.0 animations:^{
-        loginLabel.transform = CGAffineTransformMakeTranslation(0, -130);
+        self.logoTextField.transform = CGAffineTransformMakeTranslation(0, -130);
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.5 animations:^{
+        [UIView animateWithDuration:0.7 animations:^{
             self.loginView.alpha = 1.0;
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.5 animations:^{
+                self.declarationTextField.alpha = 1.0;
+                self.declarationTextField.transform = CGAffineTransformMakeTranslation(0, -50);
+            }];
         }];
     }];
 }

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "LoginViewController.h"
 
 @interface AppDelegate () <XMPPStreamDelegate>
 
@@ -21,6 +22,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     application.statusBarStyle = UIStatusBarStyleLightContent;
+    
+    LoginViewController *loginVC = [[LoginViewController alloc] initWithNibName:@"LoginViewControllerView" bundle:[NSBundle mainBundle]];
+    [self.window setRootViewController:loginVC];
     
     // 1. 创建XMPPStream
     [self setupXMPPStream];     // 整个app生命周期，XMPPStream就应该只被实例化一次
