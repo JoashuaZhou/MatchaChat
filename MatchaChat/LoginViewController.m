@@ -112,17 +112,12 @@
 //    CGRect keyboardBeginRect = [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
 //    CGRect keyboardEndRect = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
-    CGFloat translationY = -adaptKeyboardHeight;
-    self.view.transform = CGAffineTransformMakeTranslation(0, translationY);
+    self.view.transform = CGAffineTransformMakeTranslation(0, -adaptKeyboardHeight);
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification
 {
-    //    CGRect keyboardBeginRect = [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
-    //    CGRect keyboardEndRect = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    
-    CGFloat translationY = adaptKeyboardHeight;
-    self.view.transform = CGAffineTransformMakeTranslation(0, translationY);
+    self.view.transform = CGAffineTransformIdentity;
 }
 
 /*
