@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) CompletionBlock success;
 @property (nonatomic, strong) CompletionBlock failure;
+@property (nonatomic, copy) NSString *password;
 
 @end
 
@@ -25,8 +26,8 @@
 
     application.statusBarStyle = UIStatusBarStyleLightContent;
     
-//    LoginViewController *loginVC = [[LoginViewController alloc] initWithNibName:@"LoginViewControllerView" bundle:[NSBundle mainBundle]];
-//    [self.window setRootViewController:loginVC];
+    LoginViewController *loginVC = [[LoginViewController alloc] initWithNibName:@"LoginViewControllerView" bundle:[NSBundle mainBundle]];
+    [self.window setRootViewController:loginVC];
     
     // 1. 创建XMPPStream
     [self setupXMPPStream];     // 整个app生命周期，XMPPStream就应该只被实例化一次
@@ -112,6 +113,7 @@
     
     // 2. 取消激活在setupStream方法中激活的扩展模块
     [_xmppReconnect deactivate];
+    [_xmppvCardTempModule deactivate];
     
     // 3. 断开XMPPStream的连接
     [_xmppStream disconnect];
@@ -119,6 +121,7 @@
     // 4. 内存清理
     _xmppStream = nil;
     _xmppReconnect = nil;
+    _xmppvCardTempModule = nil;
 }
 
 #pragma mark - XMPPStream Delegate
@@ -126,14 +129,14 @@
 {
     NSLog(@"连接成功");
     
-    NSString *password = @"123456";     // 在这里才需要密码
+    self.password = @"123456";
     
     // 验证密码/注册是同一级别的，你必须先要connect，才可以authenticate或者register
     NSError *error = nil;
     if (!self.isRegistered) {
-        [_xmppStream authenticateWithPassword:password error:&error];
+        [_xmppStream authenticateWithPassword:self.password error:&error];
     } else {
-        [_xmppStream registerWithPassword:@"123456" error:&error];
+        [_xmppStream registerWithPassword:self.password error:&error];
     }
     
     if (error) {
@@ -193,8 +196,7 @@
     //    }
     
     // 2. 获取账号、服务器名称(连接成功才需要密码，用于验证)
-//    NSString *accountName = @"joshua@joshuas-macbook-pro.local";
-//    NSString *hostName = @"joshuas-macbook-pro.local";
+    self.password = password;
     serverName = @"joshuas-macbook-pro.local";
     accountName = [accountName stringByAppendingString:[NSString stringWithFormat:@"@%@", serverName]];
     
