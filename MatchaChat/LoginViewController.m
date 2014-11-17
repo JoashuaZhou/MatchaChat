@@ -25,6 +25,7 @@
 @implementation LoginViewController
 
 // XMPP官方建议用appDelegate助手方法
+// Why?
 - (AppDelegate *)appDelegate
 {
     return [UIApplication sharedApplication].delegate;

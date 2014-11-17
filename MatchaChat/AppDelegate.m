@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "XMPPvCardCoreDataStorage.h"
+#import "XMPPvCardTempModule.h"
 
 @interface AppDelegate () <XMPPStreamDelegate>
 
@@ -23,8 +25,8 @@
 
     application.statusBarStyle = UIStatusBarStyleLightContent;
     
-    LoginViewController *loginVC = [[LoginViewController alloc] initWithNibName:@"LoginViewControllerView" bundle:[NSBundle mainBundle]];
-    [self.window setRootViewController:loginVC];
+//    LoginViewController *loginVC = [[LoginViewController alloc] initWithNibName:@"LoginViewControllerView" bundle:[NSBundle mainBundle]];
+//    [self.window setRootViewController:loginVC];
     
     // 1. 创建XMPPStream
     [self setupXMPPStream];     // 整个app生命周期，XMPPStream就应该只被实例化一次
@@ -59,13 +61,17 @@
     // 1. alloc init
     _xmppStream = [[XMPPStream alloc] init];
     
-    // 2. 设置XMPPStream的代理，添加XMPPStreamDelegate
-    [_xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
-    
-    // 3. 扩展模块(记得去XMPPFramework.h取消评论想要扩展的模块的.h)
-    // 3.1 这里扩展的模块是自动重连(看它.h，还有判断是不是wifi环境下才重连的方法)
+    // 2. 扩展模块(记得去XMPPFramework.h取消评论想要扩展的模块的.h)
+    // 2.1 这里扩展的模块是自动重连(看它.h，还有判断是不是wifi环境下才重连的方法)
     _xmppReconnect = [[XMPPReconnect alloc] init];
     [_xmppReconnect activate:_xmppStream];
+    
+    // 2.2 电子名片模块
+    _xmppvCardTempModule = [[XMPPvCardTempModule alloc] initWithvCardStorage:[XMPPvCardCoreDataStorage sharedInstance]];    // 看XMPPvCardCoreDataStorage.h他会告诉你最好用单例，即sharedInstance
+    [_xmppvCardTempModule activate:_xmppStream];
+    
+    // 3. 设置XMPPStream的代理，添加XMPPStreamDelegate
+    [_xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
 }
 
 - (void)connectToServer
@@ -101,13 +107,16 @@
 // 销毁XMPPStream并注销已注册的扩展模块
 - (void)teardownStream
 {
-    // 1. 断开XMPPStream的连接
-    [_xmppStream disconnect];
+    // 1. 删除代理
+    [_xmppStream removeDelegate:self];
     
     // 2. 取消激活在setupStream方法中激活的扩展模块
     [_xmppReconnect deactivate];
     
-    // 3. 内存清理
+    // 3. 断开XMPPStream的连接
+    [_xmppStream disconnect];
+    
+    // 4. 内存清理
     _xmppStream = nil;
     _xmppReconnect = nil;
 }

@@ -60,6 +60,7 @@
 		42126AFC1A14813500B14BB4 /* XMPPTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 42126AF51A14813500B14BB4 /* XMPPTimer.m */; };
 		42126AFE1A14815300B14BB4 /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 42126AFD1A14815300B14BB4 /* libresolv.dylib */; };
 		42126B021A149BBF00B14BB4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42126B011A149BBF00B14BB4 /* LoginViewController.m */; };
+		42202E731A19CA2000907ACC /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42202E721A19CA2000907ACC /* ProfileViewController.m */; };
 		42316A011A162B1C003E58AF /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42316A001A162B1C003E58AF /* NavigationController.m */; };
 		42316A071A162DD2003E58AF /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42316A061A162DD2003E58AF /* TabBarViewController.m */; };
 		42A6C3CD1A15F3D500465725 /* XMPPBandwidthMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A6C2D91A15F3D500465725 /* XMPPBandwidthMonitor.m */; };
@@ -280,6 +281,9 @@
 		42126AFF1A14816A00B14BB4 /* XMPPFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPFramework.h; sourceTree = "<group>"; };
 		42126B001A149BBF00B14BB4 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		42126B011A149BBF00B14BB4 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		42202E711A19CA2000907ACC /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		42202E721A19CA2000907ACC /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		42202E741A19CF1500907ACC /* GlobalHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlobalHeader.pch; path = MatchaChat/GlobalHeader.pch; sourceTree = "<group>"; };
 		423169FF1A162B1C003E58AF /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
 		42316A001A162B1C003E58AF /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		42316A051A162DD2003E58AF /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
@@ -506,6 +510,7 @@
 		42126A2A1A1464BF00B14BB4 = {
 			isa = PBXGroup;
 			children = (
+				42202E741A19CF1500907ACC /* GlobalHeader.pch */,
 				42126A351A1464BF00B14BB4 /* MatchaChat */,
 				42126A4F1A1464BF00B14BB4 /* MatchaChatTests */,
 				42126A341A1464BF00B14BB4 /* Products */,
@@ -530,6 +535,8 @@
 				42126A3A1A1464BF00B14BB4 /* AppDelegate.h */,
 				42126A3B1A1464BF00B14BB4 /* AppDelegate.m */,
 				42126A401A1464BF00B14BB4 /* Main.storyboard */,
+				42202E711A19CA2000907ACC /* ProfileViewController.h */,
+				42202E721A19CA2000907ACC /* ProfileViewController.m */,
 				42126A431A1464BF00B14BB4 /* Images.xcassets */,
 				42126A451A1464BF00B14BB4 /* LaunchScreen.xib */,
 				42126A361A1464BF00B14BB4 /* Supporting Files */,
@@ -1625,6 +1632,7 @@
 				42A6C3DA1A15F3D500465725 /* XMPPRoster.m in Sources */,
 				42A6C4291A15F3D500465725 /* XMPPMessage+XEP_0308.m in Sources */,
 				42126AE01A14812B00B14BB4 /* XMPPIQ.m in Sources */,
+				42202E731A19CA2000907ACC /* ProfileViewController.m in Sources */,
 				42A6C4181A15F3D500465725 /* XMPPMessage+XEP_0184.m in Sources */,
 				42A6C41C1A15F3D500465725 /* XMPPStreamManagementStanzas.m in Sources */,
 				42A6C3DE1A15F3D500465725 /* XMPPJabberRPCModule.m in Sources */,
@@ -1754,6 +1762,8 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MatchaChat/GlobalHeader.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1801,6 +1811,8 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MatchaChat/GlobalHeader.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1825,6 +1837,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MatchaChat/GlobalHeader.pch";
 				INFOPLIST_FILE = MatchaChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1839,6 +1853,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MatchaChat/GlobalHeader.pch";
 				INFOPLIST_FILE = MatchaChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
