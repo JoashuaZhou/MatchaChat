@@ -119,9 +119,13 @@
     
     NSString *password = @"123456";     // 在这里才需要密码
     
-    // 验证密码
+    // 验证密码/注册是同一级别的，你必须先要connect，才可以authenticate或者register
     NSError *error = nil;
-    [_xmppStream authenticateWithPassword:password error:&error];
+    if (!self.isRegistered) {
+        [_xmppStream authenticateWithPassword:password error:&error];
+    } else {
+        [_xmppStream registerWithPassword:@"123456" error:&error];
+    }
     
     if (error) {
         NSLog(@"%@", error.localizedDescription);
@@ -153,6 +157,8 @@
 - (void)xmppStreamDidRegister:(XMPPStream *)sender
 {
     self.registration = NO;
+    
+    self.success(@"账户注册成功！");
     
     // 注册完后自动帮用户登录
     [_xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:nil];
@@ -187,13 +193,9 @@
     [_xmppStream setMyJID:[XMPPJID jidWithString:accountName]];
     [_xmppStream setHostName:serverName];
     
-    // 4. 连接 或 注册
-    if (!self.isRegistered) {
-        [_xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:nil];
-    } else {
-        [_xmppStream registerWithPassword:@"123456" error:nil];
-    }
-    
+    // 4. 连接
+    [_xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:nil];
+
     self.success = success;
     self.failure = failure;
 }
