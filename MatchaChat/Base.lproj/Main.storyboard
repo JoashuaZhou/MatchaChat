@@ -60,7 +60,7 @@
                         <sections>
                             <tableViewSection id="2QE-Im-UNH">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="k2w-cB-4Tn" detailTextLabel="0UL-Kk-3Oo" style="IBUITableViewCellStyleValue1" id="gbX-lP-rGl">
+                                    <tableViewCell tag="1" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="k2w-cB-4Tn" detailTextLabel="0UL-Kk-3Oo" style="IBUITableViewCellStyleValue1" id="gbX-lP-rGl">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gbX-lP-rGl" id="kjL-CF-onf">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -80,7 +80,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="hIF-ed-kmA" detailTextLabel="vOG-Jq-8GS" style="IBUITableViewCellStyleValue1" id="yyJ-Ac-QEr">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="hIF-ed-kmA" detailTextLabel="vOG-Jq-8GS" style="IBUITableViewCellStyleValue1" id="yyJ-Ac-QEr">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yyJ-Ac-QEr" id="0yl-P8-ff9">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -100,7 +100,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="G4v-OP-ZVf" detailTextLabel="6g0-Yu-hoj" style="IBUITableViewCellStyleValue1" id="S3t-jk-WcG">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="G4v-OP-ZVf" detailTextLabel="6g0-Yu-hoj" style="IBUITableViewCellStyleValue1" id="S3t-jk-WcG">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S3t-jk-WcG" id="UTs-ou-ifu">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -124,7 +124,7 @@
                             </tableViewSection>
                             <tableViewSection id="uvi-uH-Zl8">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Lvg-q7-waR" detailTextLabel="F4q-Gi-Gv2" style="IBUITableViewCellStyleValue1" id="5oH-xa-rQ6">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Lvg-q7-waR" detailTextLabel="F4q-Gi-Gv2" style="IBUITableViewCellStyleValue1" id="5oH-xa-rQ6">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5oH-xa-rQ6" id="S7r-Dp-zZN">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -144,7 +144,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="BvN-th-wP4" detailTextLabel="CZD-ki-Rt4" style="IBUITableViewCellStyleValue1" id="4O2-hw-PrL">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="BvN-th-wP4" detailTextLabel="CZD-ki-Rt4" style="IBUITableViewCellStyleValue1" id="4O2-hw-PrL">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4O2-hw-PrL" id="aOf-QF-4jL">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -164,7 +164,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="EpM-Xn-T9U" detailTextLabel="jqB-BH-T11" style="IBUITableViewCellStyleValue1" id="GPW-84-L91">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="EpM-Xn-T9U" detailTextLabel="jqB-BH-T11" style="IBUITableViewCellStyleValue1" id="GPW-84-L91">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GPW-84-L91" id="TiH-RO-wBO">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -184,7 +184,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="xsa-5V-rzk" detailTextLabel="srP-gz-NAr" style="IBUITableViewCellStyleValue1" id="ZPw-ew-xK9">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="xsa-5V-rzk" detailTextLabel="srP-gz-NAr" style="IBUITableViewCellStyleValue1" id="ZPw-ew-xK9">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZPw-ew-xK9" id="PZN-g1-HCD">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -213,10 +213,62 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="我" id="Ij1-n7-kWa"/>
+                    <connections>
+                        <outlet property="iconView" destination="Ria-5j-GWQ" id="shD-d1-GSy"/>
+                        <outlet property="nameTextLabel" destination="JJc-3U-nM6" id="Fhx-TY-fkI"/>
+                        <segue destination="Bfs-Ma-C8k" kind="presentation" identifier="Modify Profile Segue" id="X5J-Nt-lJz"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AdM-SY-0FF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2315" y="610"/>
+        </scene>
+        <!--Profile Setting View Controller-->
+        <scene sceneID="Rpu-CA-Uic">
+            <objects>
+                <viewController id="yfW-Cz-1wA" customClass="ProfileSettingViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SSM-No-r8H"/>
+                        <viewControllerLayoutGuide type="bottom" id="lGe-ox-ieh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="r60-2i-VNa">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="wjs-WE-vhm">
+                                <rect key="frame" x="32" y="96" width="536" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="wjs-WE-vhm" secondAttribute="trailing" constant="32" id="54P-0I-iYL"/>
+                            <constraint firstItem="wjs-WE-vhm" firstAttribute="leading" secondItem="r60-2i-VNa" secondAttribute="leading" constant="32" id="EnM-uU-DbA"/>
+                            <constraint firstItem="wjs-WE-vhm" firstAttribute="top" secondItem="SSM-No-r8H" secondAttribute="bottom" constant="32" id="N9F-Nx-idX"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="SZu-sL-Wy4">
+                        <barButtonItem key="leftBarButtonItem" title="取消" id="zTw-6I-bU3">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancel:" destination="yfW-Cz-1wA" id="Jxu-lJ-nIf"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="EHr-yj-c6M">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="save:" destination="yfW-Cz-1wA" id="o2W-EQ-cgL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="editTextField" destination="wjs-WE-vhm" id="RnQ-na-Mrj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EEB-F0-wCa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3711" y="610"/>
         </scene>
         <!--吉吉的轨迹-->
         <scene sceneID="9Gf-jh-KBi">
@@ -311,6 +363,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8QW-rl-YdJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1503" y="610"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2Wp-um-Prr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bfs-Ma-C8k" customClass="NavigationController" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sBf-Cr-8fO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="yfW-Cz-1wA" kind="relationship" relationship="rootViewController" id="dsG-xS-xyq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z0a-V7-paR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2988" y="610"/>
         </scene>
     </scenes>
 </document>

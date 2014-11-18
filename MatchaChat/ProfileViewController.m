@@ -9,8 +9,12 @@
 #import "ProfileViewController.h"
 #import "AppDelegate.h"
 #import "XMPPvCardTemp.h"
+#import "ProfileSettingViewController.h"
 
 @interface ProfileViewController ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *iconView;
+@property (weak, nonatomic) IBOutlet UIButton *nameTextLabel;
 
 @end
 
@@ -37,37 +41,46 @@
     if (card) {
         NSLog(@"有电子名片");
         // 查看电子名片包含的信息(.h里面有)
+        [self showCardInfo:card];
         
     } else {
         NSLog(@"没有电子名片");
         // 1. 新建名片
         card = [XMPPvCardTemp vCardTemp];
-        card.jid = [XMPPJID jidWithString:@"joshua@joshuas-macbook-pro.local"];
+        card.jid = [XMPPJID jidWithString:@"joshua@joshuas-macbook-pro.local"]; // 设置JID
         
         // 2. 保存电子名片(存到数据库), 初次运行会生成sqlite文件
         [[self appDelegate].xmppvCardTempModule updateMyvCardTemp:card];
     }
 }
 
-#pragma mark - Table view data source
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
+- (void)showCardInfo:(XMPPvCardTemp *)card
+{
+    if (card.photo) {
+        self.iconView.image = [UIImage imageWithData:card.photo];
+    }
+    if (card.nickname) {
+        [self.nameTextLabel setTitle:card.nickname forState:UIControlStateNormal];
+    }
 }
-*/
 
-/*
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if (cell.tag == 0) {    // 我这里设定tag = 0是可编辑的，tag = 1是不可编辑的
+        [self performSegueWithIdentifier:@"Modify Profile Segue" sender:cell];   // 其实sender就是传参的东西，你传个什么都可以
+    }
+}
+
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    UINavigationController *nav = (UINavigationController *)segue.destinationViewController;
+    ProfileSettingViewController *psvc = (ProfileSettingViewController *)nav.topViewController;
+    UITableViewCell *cell = (UITableViewCell *)sender;
+    psvc.titleText = cell.textLabel.text;
+    psvc.editText = cell.detailTextLabel;
 }
-*/
 
 @end

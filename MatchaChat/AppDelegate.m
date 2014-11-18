@@ -75,23 +75,23 @@
     [_xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
 }
 
-- (void)connectToServer
-{
-    // 2. 获取账号、服务器名称(连接成功才需要密码，用于验证)
-    NSString *accountName = @"joshua@joshuas-macbook-pro.local";
-    NSString *hostName = @"joshuas-macbook-pro.local";
-    
-    // 3. 设置JID、服务器名称
-    [_xmppStream setMyJID:[XMPPJID jidWithString:accountName]];
-    [_xmppStream setHostName:hostName];
-    
-    // 4. 连接
-    NSError *error = nil;
-    [_xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:&error];
-    if (error) {
-        NSLog(@"连接失败: %@", error.localizedDescription);
-    }
-}
+//- (void)connectToServer
+//{
+//    // 2. 获取账号、服务器名称(连接成功才需要密码，用于验证)
+//    NSString *accountName = @"joshua@joshuas-macbook-pro.local";
+//    NSString *hostName = @"joshuas-macbook-pro.local";
+//    
+//    // 3. 设置JID、服务器名称
+//    [_xmppStream setMyJID:[XMPPJID jidWithString:accountName]];
+//    [_xmppStream setHostName:hostName];
+//    
+//    // 4. 连接
+//    NSError *error = nil;
+//    [_xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:&error];
+//    if (error) {
+//        NSLog(@"连接失败: %@", error.localizedDescription);
+//    }
+//}
 
 - (void)disconnectFromServer
 {
