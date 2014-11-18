@@ -33,6 +33,7 @@
     [self setupCard];
 }
 
+#pragma mark - 电子名片相关操作
 - (void)setupCard
 {
     // 1. 从xmppvCardTempModule获得电子名片的模型
@@ -65,19 +66,27 @@
     }
 }
 
-- (void)updateCard
+- (void)updateCardInfo
 {
     XMPPvCardTemp *card = [[self appDelegate].xmppvCardTempModule myvCardTemp];
-    
-    card.photo = UIImagePNGRepresentation(self.iconView.image);
+
+    /* 更新资料 */
     card.nickname = self.nameLabel.text;
     
     [[self appDelegate].xmppvCardTempModule updateMyvCardTemp:card];
 }
 
+/* 与其他改写资料函数分开的原因是，免得每次同步资料时都同步头像，节省流量 */
+- (void)updateCardIcon
+{
+    XMPPvCardTemp *card = [[self appDelegate].xmppvCardTempModule myvCardTemp];
+    card.photo = UIImagePNGRepresentation(self.iconView.image);
+    [[self appDelegate].xmppvCardTempModule updateMyvCardTemp:card];
+}
+
 - (void)profileSettingViewControllerDidModifyProfile:(ProfileSettingViewController *)profileSettingViewController
 {
-    [self updateCard];
+    [self updateCardInfo];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -105,6 +114,18 @@
     [self presentViewController:actionSheetController animated:YES completion:nil];
 }
 
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    self.iconView.image = info[UIImagePickerControllerEditedImage];
+    [self updateCardIcon];
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
 
 #pragma mark - Navigation
 
