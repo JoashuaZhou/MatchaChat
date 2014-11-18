@@ -23,7 +23,10 @@
 }
 
 - (IBAction)save:(UIBarButtonItem *)sender {
-    self.editText.text = self.editTextField.text;
+    if ([self.delegate respondsToSelector:@selector(profileSettingViewControllerDidModifyProfile:)]) {
+        self.editText.text = self.editTextField.text;
+        [self.delegate profileSettingViewControllerDidModifyProfile:self];
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

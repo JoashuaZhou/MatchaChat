@@ -11,10 +11,10 @@
 #import "XMPPvCardTemp.h"
 #import "ProfileSettingViewController.h"
 
-@interface ProfileViewController ()
+@interface ProfileViewController () <ProfileSettingViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
-@property (weak, nonatomic) IBOutlet UIButton *nameTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 
 @end
 
@@ -60,8 +60,24 @@
         self.iconView.image = [UIImage imageWithData:card.photo];
     }
     if (card.nickname) {
-        [self.nameTextLabel setTitle:card.nickname forState:UIControlStateNormal];
+        NSLog(@"nickname: %@", card.nickname);
+        self.nameLabel.text = card.nickname;
     }
+}
+
+- (void)updateCard
+{
+    XMPPvCardTemp *card = [[self appDelegate].xmppvCardTempModule myvCardTemp];
+    
+    card.photo = UIImagePNGRepresentation(self.iconView.image);
+    card.nickname = self.nameLabel.text;
+    
+    [[self appDelegate].xmppvCardTempModule updateMyvCardTemp:card];
+}
+
+- (void)profileSettingViewControllerDidModifyProfile:(ProfileSettingViewController *)profileSettingViewController
+{
+    [self updateCard];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -78,9 +94,16 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UINavigationController *nav = (UINavigationController *)segue.destinationViewController;
     ProfileSettingViewController *psvc = (ProfileSettingViewController *)nav.topViewController;
-    UITableViewCell *cell = (UITableViewCell *)sender;
-    psvc.titleText = cell.textLabel.text;
-    psvc.editText = cell.detailTextLabel;
+    psvc.delegate = self;
+    if ([segue.identifier isEqualToString:@"Modify Profile Segue"]) {
+        UITableViewCell *cell = (UITableViewCell *)sender;
+        psvc.titleText = cell.textLabel.text;
+        psvc.editText = cell.detailTextLabel;
+    }
+    if ([segue.identifier isEqualToString:@"Modify Nickname Segue"]) {
+        psvc.titleText = @"昵称";
+        psvc.editText = self.nameLabel;
+    }
 }
 
 @end

@@ -8,9 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class ProfileSettingViewController;
+@protocol ProfileSettingViewControllerDelegate <NSObject>
+
+- (void)profileSettingViewControllerDidModifyProfile:(ProfileSettingViewController *)profileSettingViewController;
+
+@end
+
 @interface ProfileSettingViewController : UIViewController
 
 @property (nonatomic, copy) NSString *titleText;
 @property (nonatomic, weak) UILabel *editText;  // 新的传参方式，与ProfileViewController指向同一块内存区域
+
+@property (nonatomic, weak) id <ProfileSettingViewControllerDelegate> delegate;
 
 @end

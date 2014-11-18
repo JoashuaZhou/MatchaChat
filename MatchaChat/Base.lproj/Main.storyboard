@@ -43,17 +43,22 @@
                                         <constraint firstAttribute="height" constant="100" id="Umg-zi-2V1"/>
                                     </constraints>
                                 </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJc-3U-nM6">
-                                    <rect key="frame" x="282" y="146" width="36" height="34"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                    <state key="normal" title="姓名"/>
-                                </button>
+                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="姓名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXJ-Q8-ZaO">
+                                    <rect key="frame" x="279" y="138" width="42" height="20.5"/>
+                                    <gestureRecognizers/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="Wug-XM-2OB" appends="YES" id="FvB-Ua-m3E"/>
+                                    </connections>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" red="0.30980392159999998" green="0.65490196079999996" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="centerX" secondItem="Ria-5j-GWQ" secondAttribute="centerX" id="SJN-3i-w6Y"/>
-                                <constraint firstItem="Ria-5j-GWQ" firstAttribute="centerX" secondItem="JJc-3U-nM6" secondAttribute="centerX" id="gCb-dd-S7R"/>
-                                <constraint firstItem="JJc-3U-nM6" firstAttribute="top" secondItem="Ria-5j-GWQ" secondAttribute="bottom" constant="16" id="iNM-tC-R5f"/>
+                                <constraint firstItem="lXJ-Q8-ZaO" firstAttribute="top" secondItem="Ria-5j-GWQ" secondAttribute="bottom" constant="8" id="dFd-au-1bf"/>
+                                <constraint firstAttribute="centerX" secondItem="lXJ-Q8-ZaO" secondAttribute="centerX" id="ghm-pZ-Iy3"/>
                                 <constraint firstItem="Ria-5j-GWQ" firstAttribute="centerY" secondItem="Ld0-E6-n7l" secondAttribute="centerY" multiplier="0.8" id="iqn-PH-Ws3"/>
                             </constraints>
                         </view>
@@ -215,11 +220,16 @@
                     <navigationItem key="navigationItem" title="我" id="Ij1-n7-kWa"/>
                     <connections>
                         <outlet property="iconView" destination="Ria-5j-GWQ" id="shD-d1-GSy"/>
-                        <outlet property="nameTextLabel" destination="JJc-3U-nM6" id="Fhx-TY-fkI"/>
+                        <outlet property="nameLabel" destination="lXJ-Q8-ZaO" id="Mx0-yy-WPy"/>
                         <segue destination="Bfs-Ma-C8k" kind="presentation" identifier="Modify Profile Segue" id="X5J-Nt-lJz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AdM-SY-0FF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Wug-XM-2OB">
+                    <connections>
+                        <segue destination="Bfs-Ma-C8k" kind="presentation" identifier="Modify Nickname Segue" id="SSn-dw-JgW"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2315" y="610"/>
         </scene>
@@ -383,4 +393,7 @@
             <point key="canvasLocation" x="2988" y="610"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="SSn-dw-JgW"/>
+    </inferredMetricsTieBreakers>
 </document>
