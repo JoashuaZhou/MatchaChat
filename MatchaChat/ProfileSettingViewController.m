@@ -8,7 +8,8 @@
 
 #import "ProfileSettingViewController.h"
 
-@interface ProfileSettingViewController ()
+@interface ProfileSettingViewController () <UITextFieldDelegate>
+
 @property (weak, nonatomic) IBOutlet UITextField *editTextField;
 
 @end
@@ -20,10 +21,13 @@
 
     self.title = _titleText;
     self.editTextField.text = self.editText.text;
+    
+    [self.editTextField becomeFirstResponder];
 }
 
 - (IBAction)save:(UIBarButtonItem *)sender {
     if ([self.delegate respondsToSelector:@selector(profileSettingViewControllerDidModifyProfile:)]) {
+        [self.editTextField resignFirstResponder];
         self.editText.text = self.editTextField.text;
         [self.delegate profileSettingViewControllerDidModifyProfile:self];
     }
@@ -31,7 +35,15 @@
 }
 
 - (IBAction)cancel:(UIBarButtonItem *)sender {
+    [self.editTextField resignFirstResponder];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.editTextField resignFirstResponder];
+    [self save:nil];
+    return YES;
 }
 
 /*
