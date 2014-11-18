@@ -19,6 +19,10 @@
     UINavigationBar *navbar = [UINavigationBar appearance];
     [navbar setBackgroundImage:[UIImage imageNamed:@"NavigationBar"] forBarMetrics:UIBarMetricsDefault];
     [navbar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    [navbar setTintColor:[UIColor whiteColor]];
+    
+    UIBarButtonItem *barItem = [UIBarButtonItem appearance];
+    [barItem setTintColor:[UIColor whiteColor]];
 }
 
 @end

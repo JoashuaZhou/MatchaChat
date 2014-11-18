@@ -36,13 +36,6 @@
                             <rect key="frame" x="0.0" y="64" width="600" height="200"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ria-5j-GWQ" userLabel="头像">
-                                    <rect key="frame" x="250" y="30" width="100" height="100"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="100" id="0Dz-PP-8eg"/>
-                                        <constraint firstAttribute="height" constant="100" id="Umg-zi-2V1"/>
-                                    </constraints>
-                                </imageView>
                                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXJ-Q8-ZaO">
                                     <rect key="frame" x="283" y="138" width="34" height="20.5"/>
                                     <gestureRecognizers/>
@@ -53,6 +46,17 @@
                                         <outletCollection property="gestureRecognizers" destination="Wug-XM-2OB" appends="YES" id="FvB-Ua-m3E"/>
                                     </connections>
                                 </label>
+                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ria-5j-GWQ" userLabel="头像">
+                                    <rect key="frame" x="250" y="30" width="100" height="100"/>
+                                    <gestureRecognizers/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="100" id="0Dz-PP-8eg"/>
+                                        <constraint firstAttribute="height" constant="100" id="Umg-zi-2V1"/>
+                                    </constraints>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="Wq2-7y-kd1" appends="YES" id="6Rb-nh-Hhf"/>
+                                    </connections>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" red="0.30980392159999998" green="0.65490196079999996" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -225,9 +229,14 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AdM-SY-0FF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Wug-XM-2OB">
+                <tapGestureRecognizer id="Wug-XM-2OB" userLabel="Name Tap Gesture Recognizer">
                     <connections>
                         <segue destination="Bfs-Ma-C8k" kind="presentation" identifier="Modify Nickname Segue" id="SSn-dw-JgW"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Wq2-7y-kd1" userLabel="Icon Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="tapIcon:" destination="47x-5Y-MdF" id="69l-k9-QsP"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -263,13 +272,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="SZu-sL-Wy4">
                         <barButtonItem key="leftBarButtonItem" title="取消" id="zTw-6I-bU3">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="cancel:" destination="yfW-Cz-1wA" id="Jxu-lJ-nIf"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="保存" id="EHr-yj-c6M">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="save:" destination="yfW-Cz-1wA" id="o2W-EQ-cgL"/>
                             </connections>
@@ -397,6 +404,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SSn-dw-JgW"/>
+        <segue reference="X5J-Nt-lJz"/>
     </inferredMetricsTieBreakers>
 </document>

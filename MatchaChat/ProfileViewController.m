@@ -11,7 +11,7 @@
 #import "XMPPvCardTemp.h"
 #import "ProfileSettingViewController.h"
 
-@interface ProfileViewController () <ProfileSettingViewControllerDelegate>
+@interface ProfileViewController () <ProfileSettingViewControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -86,6 +86,23 @@
     if (cell.tag == 0) {    // 我这里设定tag = 0是可编辑的，tag = 1是不可编辑的
         [self performSegueWithIdentifier:@"Modify Profile Segue" sender:cell];   // 其实sender就是传参的东西，你传个什么都可以
     }
+}
+
+- (IBAction)tapIcon:(UITapGestureRecognizer *)sender {
+    UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
+    [actionSheetController addAction:[UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        ipc.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentViewController:ipc animated:YES completion:nil];
+    }]];
+    [actionSheetController addAction:[UIAlertAction actionWithTitle:@"从照片中选取" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        ipc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:ipc animated:YES completion:nil];
+    }]];
+    [actionSheetController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    ipc.allowsEditing = YES;
+    ipc.delegate = self;
+    [self presentViewController:actionSheetController animated:YES completion:nil];
 }
 
 
