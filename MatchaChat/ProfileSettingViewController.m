@@ -11,6 +11,7 @@
 @interface ProfileSettingViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *editTextField;
+@property (weak, nonatomic) IBOutlet UITextView *editTextView;
 
 @end
 
@@ -20,7 +21,20 @@
     [super viewDidLoad];
 
     self.title = _titleText;
-    self.editTextField.text = self.editText.text;
+    
+    self.editTextView.layer.cornerRadius = 12.0;
+    self.editTextView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.editTextView.layer.borderWidth = 0.5;
+    
+    if (self.isUpdatingDescription) {
+        self.editTextField.hidden = YES;
+        self.editTextView.hidden = NO;
+        self.editTextView.text = self.editText.text;
+    } else {
+        self.editTextView.hidden = YES;
+        self.editTextField.hidden = NO;
+        self.editTextField.text = self.editText.text;
+    }
     
     [self.editTextField becomeFirstResponder];
 }
@@ -28,7 +42,11 @@
 - (IBAction)save:(UIBarButtonItem *)sender {
     if ([self.delegate respondsToSelector:@selector(profileSettingViewControllerDidModifyProfile:)]) {
         [self.editTextField resignFirstResponder];
-        self.editText.text = self.editTextField.text;
+        if (self.isUpdatingDescription) {
+            self.editText.text = self.editTextView.text;
+        } else {
+            self.editText.text = self.editTextField.text;
+        }
         [self.delegate profileSettingViewControllerDidModifyProfile:self];
     }
     [self dismissViewControllerAnimated:YES completion:nil];

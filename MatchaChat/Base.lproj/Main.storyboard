@@ -36,18 +36,8 @@
                             <rect key="frame" x="0.0" y="64" width="600" height="200"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXJ-Q8-ZaO">
-                                    <rect key="frame" x="283" y="138" width="34" height="20.5"/>
-                                    <gestureRecognizers/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                    <connections>
-                                        <outletCollection property="gestureRecognizers" destination="Wug-XM-2OB" appends="YES" id="FvB-Ua-m3E"/>
-                                    </connections>
-                                </label>
                                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ria-5j-GWQ" userLabel="头像">
-                                    <rect key="frame" x="250" y="30" width="100" height="100"/>
+                                    <rect key="frame" x="250" y="20" width="100" height="100"/>
                                     <gestureRecognizers/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="100" id="0Dz-PP-8eg"/>
@@ -57,12 +47,36 @@
                                         <outletCollection property="gestureRecognizers" destination="Wq2-7y-kd1" appends="YES" id="6Rb-nh-Hhf"/>
                                     </connections>
                                 </imageView>
+                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXJ-Q8-ZaO">
+                                    <rect key="frame" x="282" y="128" width="36" height="21.5"/>
+                                    <gestureRecognizers/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="Wug-XM-2OB" appends="YES" id="FvB-Ua-m3E"/>
+                                    </connections>
+                                </label>
+                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="个性签名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RsY-nm-NLo">
+                                    <rect key="frame" x="16" y="157" width="568" height="18"/>
+                                    <gestureRecognizers/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="Grb-zp-ZQg" appends="YES" id="dUa-bt-HkB"/>
+                                    </connections>
+                                </label>
                             </subviews>
                             <constraints>
+                                <constraint firstItem="RsY-nm-NLo" firstAttribute="leading" secondItem="Ld0-E6-n7l" secondAttribute="leading" constant="16" id="Eiu-uV-Wzi"/>
+                                <constraint firstItem="RsY-nm-NLo" firstAttribute="top" secondItem="lXJ-Q8-ZaO" secondAttribute="bottom" constant="8" id="KXQ-6c-g9g"/>
                                 <constraint firstAttribute="centerX" secondItem="Ria-5j-GWQ" secondAttribute="centerX" id="SJN-3i-w6Y"/>
+                                <constraint firstAttribute="trailing" secondItem="RsY-nm-NLo" secondAttribute="trailing" constant="16" id="T14-Kh-M46"/>
+                                <constraint firstAttribute="centerX" secondItem="RsY-nm-NLo" secondAttribute="centerX" id="b96-JE-LKA"/>
                                 <constraint firstItem="lXJ-Q8-ZaO" firstAttribute="top" secondItem="Ria-5j-GWQ" secondAttribute="bottom" constant="8" id="dFd-au-1bf"/>
                                 <constraint firstAttribute="centerX" secondItem="lXJ-Q8-ZaO" secondAttribute="centerX" id="ghm-pZ-Iy3"/>
-                                <constraint firstItem="Ria-5j-GWQ" firstAttribute="centerY" secondItem="Ld0-E6-n7l" secondAttribute="centerY" multiplier="0.8" id="iqn-PH-Ws3"/>
+                                <constraint firstItem="Ria-5j-GWQ" firstAttribute="centerY" secondItem="Ld0-E6-n7l" secondAttribute="centerY" multiplier="0.7" id="iqn-PH-Ws3"/>
                             </constraints>
                         </view>
                         <sections>
@@ -222,6 +236,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="我" id="Ij1-n7-kWa"/>
                     <connections>
+                        <outlet property="descriptionLabel" destination="RsY-nm-NLo" id="sEy-fh-mCT"/>
                         <outlet property="iconView" destination="Ria-5j-GWQ" id="shD-d1-GSy"/>
                         <outlet property="nameLabel" destination="lXJ-Q8-ZaO" id="Mx0-yy-WPy"/>
                         <segue destination="Bfs-Ma-C8k" kind="presentation" identifier="Modify Profile Segue" id="X5J-Nt-lJz"/>
@@ -236,6 +251,12 @@
                 <tapGestureRecognizer id="Wq2-7y-kd1" userLabel="Icon Tap Gesture Recognizer">
                     <connections>
                         <action selector="tapIcon:" destination="47x-5Y-MdF" id="69l-k9-QsP"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Grb-zp-ZQg" userLabel="Description Gesture Recognizer">
+                    <connections>
+                        <action selector="tapDescriptionLabel:" destination="47x-5Y-MdF" id="xaZ-8O-hGH"/>
+                        <segue destination="Bfs-Ma-C8k" kind="presentation" identifier="Modify Description Segue" id="NvQ-tP-bFJ"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -261,12 +282,24 @@
                                     <outlet property="delegate" destination="yfW-Cz-1wA" id="efh-Pa-geq"/>
                                 </connections>
                             </textField>
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0U8-CT-T6v">
+                                <rect key="frame" x="32" y="96" width="536" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="VRM-4a-CsQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="0U8-CT-T6v" secondAttribute="trailing" constant="32" id="1Dq-5t-Mwb"/>
                             <constraint firstAttribute="trailing" secondItem="wjs-WE-vhm" secondAttribute="trailing" constant="32" id="54P-0I-iYL"/>
                             <constraint firstItem="wjs-WE-vhm" firstAttribute="leading" secondItem="r60-2i-VNa" secondAttribute="leading" constant="32" id="EnM-uU-DbA"/>
+                            <constraint firstItem="0U8-CT-T6v" firstAttribute="top" secondItem="SSM-No-r8H" secondAttribute="bottom" constant="32" id="Ijf-80-nRW"/>
                             <constraint firstItem="wjs-WE-vhm" firstAttribute="top" secondItem="SSM-No-r8H" secondAttribute="bottom" constant="32" id="N9F-Nx-idX"/>
+                            <constraint firstItem="0U8-CT-T6v" firstAttribute="leading" secondItem="r60-2i-VNa" secondAttribute="leading" constant="32" id="WrS-Wn-Kfb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="SZu-sL-Wy4">
@@ -283,6 +316,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="editTextField" destination="wjs-WE-vhm" id="RnQ-na-Mrj"/>
+                        <outlet property="editTextView" destination="0U8-CT-T6v" id="YUy-wF-4YP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EEB-F0-wCa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -403,6 +437,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="X5J-Nt-lJz"/>
+        <segue reference="NvQ-tP-bFJ"/>
     </inferredMetricsTieBreakers>
 </document>

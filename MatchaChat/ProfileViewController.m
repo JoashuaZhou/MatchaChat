@@ -15,6 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
 @end
 
@@ -31,6 +32,9 @@
     [super viewDidLoad];
     
     [self setupCard];
+
+//    self.iconView.layer.borderWidth = 3.0;
+//    self.iconView.layer.borderColor = [[[UIColor whiteColor] colorWithAlphaComponent:0.7] CGColor];
 }
 
 #pragma mark - 电子名片相关操作
@@ -114,6 +118,10 @@
     [self presentViewController:actionSheetController animated:YES completion:nil];
 }
 
+- (IBAction)tapDescriptionLabel:(UITapGestureRecognizer *)sender {
+    [self performSegueWithIdentifier:@"Modify Description Segue" sender:nil];
+}
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     self.iconView.image = info[UIImagePickerControllerEditedImage];
@@ -137,10 +145,17 @@
         UITableViewCell *cell = (UITableViewCell *)sender;
         psvc.titleText = cell.textLabel.text;
         psvc.editText = cell.detailTextLabel;
+        psvc.updatingDescription = NO;
     }
     if ([segue.identifier isEqualToString:@"Modify Nickname Segue"]) {
         psvc.titleText = @"昵称";
         psvc.editText = self.nameLabel;
+        psvc.updatingDescription = NO;
+    }
+    if ([segue.identifier isEqualToString:@"Modify Description Segue"]) {
+        psvc.titleText = @"个性签名";
+        psvc.editText = self.descriptionLabel;
+        psvc.updatingDescription = YES;
     }
 }
 

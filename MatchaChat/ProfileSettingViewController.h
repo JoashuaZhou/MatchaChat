@@ -20,6 +20,8 @@
 @property (nonatomic, copy) NSString *titleText;
 @property (nonatomic, weak) UILabel *editText;  // 新的传参方式，与ProfileViewController指向同一块内存区域
 
+@property (nonatomic, assign, getter=isUpdatingDescription) BOOL updatingDescription;
+
 @property (nonatomic, weak) id <ProfileSettingViewControllerDelegate> delegate;
 
 @end
