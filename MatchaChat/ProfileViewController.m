@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "XMPPvCardTemp.h"
 #import "ProfileSettingViewController.h"
+#import "UIImage+Joshua.h"
 
 @interface ProfileViewController () <ProfileSettingViewControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate>
 
@@ -50,6 +51,7 @@
     self.headerViewBackgroundImageView.contentSize = self.headerViewBackgroundImageView.superview.bounds.size;
     self.headerViewBackgroundImageView.maximumZoomScale = 3.0;
     self.headerViewBackgroundImageView.delegate = self;
+    self.headerViewBackgroundImageView.contentOffset = self.view.center;
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.headerViewBackgroundImageView.frame];
     [self.headerViewBackgroundImageView addSubview:imageView];
     
@@ -121,7 +123,7 @@
 - (void)showCardInfo:(XMPPvCardTemp *)card
 {
     if (card.photo) {
-        self.iconView.image = [UIImage imageWithData:card.photo];
+        self.iconView.image = [UIImage circleImage:[UIImage imageWithData:card.photo] borderWidth:3.0 borderColor:[[UIColor whiteColor] colorWithAlphaComponent:0.7]];
     }
     if (card.nickname) {
         NSLog(@"nickname: %@", card.nickname);

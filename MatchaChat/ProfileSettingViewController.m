@@ -22,10 +22,6 @@
 
     self.title = _titleText;
     
-    self.editTextView.layer.cornerRadius = 10.0;
-    self.editTextView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    self.editTextView.layer.borderWidth = 0.5;
-    
     if (self.isUpdatingDescription) {
         self.editTextField.hidden = YES;
         self.editTextView.hidden = NO;

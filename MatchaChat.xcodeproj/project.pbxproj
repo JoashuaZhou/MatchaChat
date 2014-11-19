@@ -64,6 +64,7 @@
 		42316A011A162B1C003E58AF /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42316A001A162B1C003E58AF /* NavigationController.m */; };
 		42316A071A162DD2003E58AF /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42316A061A162DD2003E58AF /* TabBarViewController.m */; };
 		427F6A871A1ADA3500B7E9DA /* ProfileSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 427F6A861A1ADA3500B7E9DA /* ProfileSettingViewController.m */; };
+		427F6A8B1A1C68E600B7E9DA /* UIImage+Joshua.m in Sources */ = {isa = PBXBuildFile; fileRef = 427F6A8A1A1C68E600B7E9DA /* UIImage+Joshua.m */; };
 		42A6C3CD1A15F3D500465725 /* XMPPBandwidthMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A6C2D91A15F3D500465725 /* XMPPBandwidthMonitor.m */; };
 		42A6C3CE1A15F3D500465725 /* XMPPCoreDataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A6C2DC1A15F3D500465725 /* XMPPCoreDataStorage.m */; };
 		42A6C3CF1A15F3D500465725 /* XMPPGoogleSharedStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A6C2E01A15F3D500465725 /* XMPPGoogleSharedStatus.m */; };
@@ -291,6 +292,8 @@
 		42316A061A162DD2003E58AF /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
 		427F6A851A1ADA3500B7E9DA /* ProfileSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileSettingViewController.h; sourceTree = "<group>"; };
 		427F6A861A1ADA3500B7E9DA /* ProfileSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileSettingViewController.m; sourceTree = "<group>"; };
+		427F6A891A1C68E600B7E9DA /* UIImage+Joshua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Joshua.h"; sourceTree = "<group>"; };
+		427F6A8A1A1C68E600B7E9DA /* UIImage+Joshua.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Joshua.m"; sourceTree = "<group>"; };
 		42A6C2D81A15F3D500465725 /* XMPPBandwidthMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPBandwidthMonitor.h; sourceTree = "<group>"; };
 		42A6C2D91A15F3D500465725 /* XMPPBandwidthMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPBandwidthMonitor.m; sourceTree = "<group>"; };
 		42A6C2DB1A15F3D500465725 /* XMPPCoreDataStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPCoreDataStorage.h; sourceTree = "<group>"; };
@@ -532,6 +535,7 @@
 		42126A351A1464BF00B14BB4 /* MatchaChat */ = {
 			isa = PBXGroup;
 			children = (
+				427F6A881A1C68C600B7E9DA /* Category */,
 				42316A081A1647BD003E58AF /* Other */,
 				4248BCC71A16271900C75008 /* Login */,
 				42126A5C1A1464E500B14BB4 /* Libs */,
@@ -866,6 +870,15 @@
 				42A6C42C1A15FE1E00465725 /* LoginViewControllerView.xib */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		427F6A881A1C68C600B7E9DA /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				427F6A891A1C68E600B7E9DA /* UIImage+Joshua.h */,
+				427F6A8A1A1C68E600B7E9DA /* UIImage+Joshua.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		42A6C2D61A15F3D500465725 /* Extensions */ = {
@@ -1656,6 +1669,7 @@
 				42126AE21A14812B00B14BB4 /* XMPPMessage.m in Sources */,
 				42126ABA1A14810D00B14BB4 /* XMPPDeprecatedDigestAuthentication.m in Sources */,
 				42A6C3E71A15F3D500465725 /* XMPPRoomHybridStorage.m in Sources */,
+				427F6A8B1A1C68E600B7E9DA /* UIImage+Joshua.m in Sources */,
 				42126ABD1A14810D00B14BB4 /* XMPPPlainAuthentication.m in Sources */,
 				42A6C4051A15F3D500465725 /* NSDate+XMPPDateTimeProfiles.m in Sources */,
 				42A6C4161A15F3D500465725 /* XMPPMessage+XEP_0172.m in Sources */,
