@@ -11,11 +11,16 @@
 #import "XMPPvCardTemp.h"
 #import "ProfileSettingViewController.h"
 
-@interface ProfileViewController () <ProfileSettingViewControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface ProfileViewController () <ProfileSettingViewControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UIScrollView *headerViewBackgroundImageView;
+
+@property (nonatomic, weak) CADisplayLink *displayLink;
+@property (nonatomic, assign) CGFloat animateScale;
+@property (nonatomic, assign) int animateCount;
 
 @end
 
@@ -33,9 +38,73 @@
     
     [self setupCard];
 
+    [self setupUI];
 //    self.iconView.layer.borderWidth = 3.0;
 //    self.iconView.layer.borderColor = [[[UIColor whiteColor] colorWithAlphaComponent:0.7] CGColor];
 }
+
+- (void)setupUI
+{
+    self.animateCount = 0;
+    self.headerViewBackgroundImageView.contentSize = self.headerViewBackgroundImageView.superview.bounds.size;
+    self.headerViewBackgroundImageView.maximumZoomScale = 3.0;
+    self.headerViewBackgroundImageView.delegate = self;
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.headerViewBackgroundImageView.frame];
+    [self.headerViewBackgroundImageView addSubview:imageView];
+    
+    [self changeBackgroundImage];
+    
+    [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(changeBackgroundImage) userInfo:nil repeats:YES];
+}
+
+- (void)animateBackgroundImage
+{
+    [self.headerViewBackgroundImageView setZoomScale:self.animateScale animated:YES];
+    self.animateScale += 0.001;
+}
+
+- (void)changeBackgroundImage
+{
+    self.animateScale = 1.0;
+    [self.headerViewBackgroundImageView setZoomScale:self.animateScale animated:NO];
+    [self.displayLink invalidate];
+    self.displayLink = nil;
+    
+    UIImageView *imageView = (UIImageView *)[self.headerViewBackgroundImageView.subviews lastObject];
+    imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"Background%d", self.animateCount]];
+    self.animateCount = (self.animateCount + 1) % 3;
+    CATransition *animation = [CATransition animation];
+    animation.type = @"fade";
+    animation.duration = 0.3;
+    animation.delegate = self;
+    [imageView.layer addAnimation:animation forKey:nil];
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    CADisplayLink *displaylink = [CADisplayLink displayLinkWithTarget:self selector:@selector(animateBackgroundImage)];
+    [displaylink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    self.displayLink = displaylink;
+}
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return (UIImageView *)[self.headerViewBackgroundImageView.subviews lastObject];
+}
+
+//- (void)haha
+//{
+//    [self.backgroundImageView.layer removeAllAnimations];
+//    self.animateCount = (self.animateCount + 1) % 3;
+//    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"Background%d", self.animateCount]];
+//
+//    CABasicAnimation *animation = [CABasicAnimation animation];
+//    animation.keyPath = @"transform.scale";
+//    animation.fromValue = @(1.0);
+//    animation.toValue = @(3.0);
+//    animation.duration = 3.0;
+//    [self.backgroundImageView.layer addAnimation:animation forKey:@"haha"];
+//}
 
 #pragma mark - 电子名片相关操作
 - (void)setupCard

@@ -36,6 +36,9 @@
                             <rect key="frame" x="0.0" y="64" width="600" height="200"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
+                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bL3-ts-zk3" userLabel="背景图">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+                                </scrollView>
                                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ria-5j-GWQ" userLabel="头像">
                                     <rect key="frame" x="250" y="20" width="100" height="100"/>
                                     <gestureRecognizers/>
@@ -69,6 +72,10 @@
                                 </label>
                             </subviews>
                             <constraints>
+                                <constraint firstAttribute="trailing" secondItem="bL3-ts-zk3" secondAttribute="trailing" id="0Xn-AM-fRM"/>
+                                <constraint firstAttribute="bottom" secondItem="bL3-ts-zk3" secondAttribute="bottom" id="2LD-O5-WN5"/>
+                                <constraint firstItem="bL3-ts-zk3" firstAttribute="leading" secondItem="Ld0-E6-n7l" secondAttribute="leading" id="6ll-kz-vQM"/>
+                                <constraint firstItem="bL3-ts-zk3" firstAttribute="top" secondItem="Ld0-E6-n7l" secondAttribute="top" id="89m-xO-N9T"/>
                                 <constraint firstItem="RsY-nm-NLo" firstAttribute="leading" secondItem="Ld0-E6-n7l" secondAttribute="leading" constant="16" id="Eiu-uV-Wzi"/>
                                 <constraint firstItem="RsY-nm-NLo" firstAttribute="top" secondItem="lXJ-Q8-ZaO" secondAttribute="bottom" constant="8" id="KXQ-6c-g9g"/>
                                 <constraint firstAttribute="centerX" secondItem="Ria-5j-GWQ" secondAttribute="centerX" id="SJN-3i-w6Y"/>
@@ -237,6 +244,7 @@
                     <navigationItem key="navigationItem" title="我" id="Ij1-n7-kWa"/>
                     <connections>
                         <outlet property="descriptionLabel" destination="RsY-nm-NLo" id="sEy-fh-mCT"/>
+                        <outlet property="headerViewBackgroundImageView" destination="bL3-ts-zk3" id="HlQ-0f-ALU"/>
                         <outlet property="iconView" destination="Ria-5j-GWQ" id="shD-d1-GSy"/>
                         <outlet property="nameLabel" destination="lXJ-Q8-ZaO" id="Mx0-yy-WPy"/>
                         <segue destination="Bfs-Ma-C8k" kind="presentation" identifier="Modify Profile Segue" id="X5J-Nt-lJz"/>

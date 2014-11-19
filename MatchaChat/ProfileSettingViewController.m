@@ -22,7 +22,7 @@
 
     self.title = _titleText;
     
-    self.editTextView.layer.cornerRadius = 12.0;
+    self.editTextView.layer.cornerRadius = 10.0;
     self.editTextView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     self.editTextView.layer.borderWidth = 0.5;
     
