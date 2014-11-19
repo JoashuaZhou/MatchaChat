@@ -55,6 +55,7 @@
     
     [self changeBackgroundImage];
     
+    // 把计时器放到runLoop中，就可以实现滚动时定时器依然工作
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(changeBackgroundImage) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
