@@ -43,6 +43,7 @@
 //    self.iconView.layer.borderColor = [[[UIColor whiteColor] colorWithAlphaComponent:0.7] CGColor];
 }
 
+#pragma mark - 背景图放大动画
 - (void)setupUI
 {
     self.animateCount = 0;
@@ -54,7 +55,8 @@
     
     [self changeBackgroundImage];
     
-    [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(changeBackgroundImage) userInfo:nil repeats:YES];
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(changeBackgroundImage) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
 
 - (void)animateBackgroundImage
@@ -82,8 +84,9 @@
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
+    /* CADisplayLink经常用于做动画，因为它与屏幕刷新频率一样，用户看起来就很顺畅，而不会卡 */
     CADisplayLink *displaylink = [CADisplayLink displayLinkWithTarget:self selector:@selector(animateBackgroundImage)];
-    [displaylink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    [displaylink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
     self.displayLink = displaylink;
 }
 
@@ -91,20 +94,6 @@
 {
     return (UIImageView *)[self.headerViewBackgroundImageView.subviews lastObject];
 }
-
-//- (void)haha
-//{
-//    [self.backgroundImageView.layer removeAllAnimations];
-//    self.animateCount = (self.animateCount + 1) % 3;
-//    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"Background%d", self.animateCount]];
-//
-//    CABasicAnimation *animation = [CABasicAnimation animation];
-//    animation.keyPath = @"transform.scale";
-//    animation.fromValue = @(1.0);
-//    animation.toValue = @(3.0);
-//    animation.duration = 3.0;
-//    [self.backgroundImageView.layer addAnimation:animation forKey:@"haha"];
-//}
 
 #pragma mark - 电子名片相关操作
 - (void)setupCard
