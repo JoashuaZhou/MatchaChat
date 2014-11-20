@@ -27,8 +27,17 @@
 {
     if (!_fetchResultController) {
         NSManagedObjectContext *context = [[[self appDelegate] xmppRosterStorage] mainThreadManagedObjectContext];
-//        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"XMPPUserCoreDataStorageObject"];
-//        _fetchResultController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:<#(NSString *)#> cacheName:nil];
+        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"XMPPUserCoreDataStorageObject"];
+        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"displayName" ascending:YES];
+        fetchRequest.sortDescriptors = @[sort];
+        _fetchResultController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:@"displayName" cacheName:@"Contacts"];
+        
+        /* 执行一下fetch */
+        NSError *error = nil;
+        [_fetchResultController performFetch:&error];
+        if (error) {
+            NSLog(@"%@", error.localizedDescription);
+        }
     }
     
     return _fetchResultController;
@@ -36,31 +45,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
 }
 
 #pragma mark - Table view data source
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-    return 0;
+    return self.fetchResultController.sections.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return 0;
+    id <NSFetchedResultsSectionInfo> sectionInfo = self.fetchResultController.sections[section];
+    return [sectionInfo numberOfObjects];
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Contacts" forIndexPath:indexPath];
     
     // Configure the cell...
+    XMPPUserCoreDataStorageObject *object = [self.fetchResultController objectAtIndexPath:indexPath];
+    cell.textLabel.text = object.displayName;
     
     return cell;
 }
-*/
 
 /*
 #pragma mark - Navigation

@@ -14,7 +14,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="AFF-b1-uaN">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Contacts" id="AFF-b1-uaN">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AFF-b1-uaN" id="Ybv-Oq-HqX">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -398,7 +398,6 @@
         <!--联系人-->
         <scene sceneID="FYK-PF-G1N">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xf0-m8-MwV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bk1-ww-Tml" customClass="NavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="联系人" id="Ybi-bi-Wc7"/>
                     <toolbarItems/>
@@ -411,6 +410,7 @@
                         <segue destination="hcI-QT-zYl" kind="relationship" relationship="rootViewController" id="RwC-8M-Tep"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xf0-m8-MwV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1503" y="-64"/>
         </scene>
