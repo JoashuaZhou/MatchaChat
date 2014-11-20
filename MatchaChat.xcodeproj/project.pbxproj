@@ -60,11 +60,13 @@
 		42126AFC1A14813500B14BB4 /* XMPPTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 42126AF51A14813500B14BB4 /* XMPPTimer.m */; };
 		42126AFE1A14815300B14BB4 /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 42126AFD1A14815300B14BB4 /* libresolv.dylib */; };
 		42126B021A149BBF00B14BB4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42126B011A149BBF00B14BB4 /* LoginViewController.m */; };
+		421E438E1A1D6E7100528FC1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 421E438D1A1D6E7100528FC1 /* CoreData.framework */; };
 		42202E731A19CA2000907ACC /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42202E721A19CA2000907ACC /* ProfileViewController.m */; };
 		42316A011A162B1C003E58AF /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42316A001A162B1C003E58AF /* NavigationController.m */; };
 		42316A071A162DD2003E58AF /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42316A061A162DD2003E58AF /* TabBarViewController.m */; };
 		427F6A871A1ADA3500B7E9DA /* ProfileSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 427F6A861A1ADA3500B7E9DA /* ProfileSettingViewController.m */; };
 		427F6A8B1A1C68E600B7E9DA /* UIImage+Joshua.m in Sources */ = {isa = PBXBuildFile; fileRef = 427F6A8A1A1C68E600B7E9DA /* UIImage+Joshua.m */; };
+		427F6A901A1C6FE000B7E9DA /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 427F6A8F1A1C6FE000B7E9DA /* ContactsViewController.m */; };
 		42A6C3CD1A15F3D500465725 /* XMPPBandwidthMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A6C2D91A15F3D500465725 /* XMPPBandwidthMonitor.m */; };
 		42A6C3CE1A15F3D500465725 /* XMPPCoreDataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A6C2DC1A15F3D500465725 /* XMPPCoreDataStorage.m */; };
 		42A6C3CF1A15F3D500465725 /* XMPPGoogleSharedStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A6C2E01A15F3D500465725 /* XMPPGoogleSharedStatus.m */; };
@@ -283,6 +285,7 @@
 		42126AFF1A14816A00B14BB4 /* XMPPFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPFramework.h; sourceTree = "<group>"; };
 		42126B001A149BBF00B14BB4 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		42126B011A149BBF00B14BB4 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		421E438D1A1D6E7100528FC1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		42202E711A19CA2000907ACC /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		42202E721A19CA2000907ACC /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		42202E741A19CF1500907ACC /* GlobalHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlobalHeader.pch; path = MatchaChat/GlobalHeader.pch; sourceTree = "<group>"; };
@@ -294,6 +297,8 @@
 		427F6A861A1ADA3500B7E9DA /* ProfileSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileSettingViewController.m; sourceTree = "<group>"; };
 		427F6A891A1C68E600B7E9DA /* UIImage+Joshua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Joshua.h"; sourceTree = "<group>"; };
 		427F6A8A1A1C68E600B7E9DA /* UIImage+Joshua.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Joshua.m"; sourceTree = "<group>"; };
+		427F6A8E1A1C6FE000B7E9DA /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
+		427F6A8F1A1C6FE000B7E9DA /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
 		42A6C2D81A15F3D500465725 /* XMPPBandwidthMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPBandwidthMonitor.h; sourceTree = "<group>"; };
 		42A6C2D91A15F3D500465725 /* XMPPBandwidthMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPBandwidthMonitor.m; sourceTree = "<group>"; };
 		42A6C2DB1A15F3D500465725 /* XMPPCoreDataStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPCoreDataStorage.h; sourceTree = "<group>"; };
@@ -495,6 +500,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				421E438E1A1D6E7100528FC1 /* CoreData.framework in Frameworks */,
 				42126AFE1A14815300B14BB4 /* libresolv.dylib in Frameworks */,
 				42126A961A14801E00B14BB4 /* libxml2.dylib in Frameworks */,
 				42126A9D1A1480D800B14BB4 /* libidn.a in Frameworks */,
@@ -542,6 +548,8 @@
 				42126A3A1A1464BF00B14BB4 /* AppDelegate.h */,
 				42126A3B1A1464BF00B14BB4 /* AppDelegate.m */,
 				42126A401A1464BF00B14BB4 /* Main.storyboard */,
+				427F6A8E1A1C6FE000B7E9DA /* ContactsViewController.h */,
+				427F6A8F1A1C6FE000B7E9DA /* ContactsViewController.m */,
 				42202E711A19CA2000907ACC /* ProfileViewController.h */,
 				42202E721A19CA2000907ACC /* ProfileViewController.m */,
 				427F6A851A1ADA3500B7E9DA /* ProfileSettingViewController.h */,
@@ -556,6 +564,7 @@
 		42126A361A1464BF00B14BB4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				421E438D1A1D6E7100528FC1 /* CoreData.framework */,
 				42126AFD1A14815300B14BB4 /* libresolv.dylib */,
 				42126A951A14801E00B14BB4 /* libxml2.dylib */,
 				42126A821A147FA900B14BB4 /* Security.framework */,
@@ -1697,6 +1706,7 @@
 				42A6C3CF1A15F3D500465725 /* XMPPGoogleSharedStatus.m in Sources */,
 				42A6C42A1A15F3D500465725 /* XMPPMessage+XEP_0333.m in Sources */,
 				42126AF91A14813500B14BB4 /* XMPPIDTracker.m in Sources */,
+				427F6A901A1C6FE000B7E9DA /* ContactsViewController.m in Sources */,
 				42316A071A162DD2003E58AF /* TabBarViewController.m in Sources */,
 				42A6C41F1A15F3D500465725 /* XMPPPing.m in Sources */,
 				42A6C40B1A15F3D500465725 /* XMPPCapabilities.xcdatamodel in Sources */,

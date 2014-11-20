@@ -71,8 +71,14 @@
     _xmppvCardTempModule = [[XMPPvCardTempModule alloc] initWithvCardStorage:[XMPPvCardCoreDataStorage sharedInstance]];    // 看XMPPvCardCoreDataStorage.h他会告诉你最好用单例，即sharedInstance
     [_xmppvCardTempModule activate:_xmppStream];
     
+    // 2.3 花名册模块
+    _xmppRosterStorage = [[XMPPRosterCoreDataStorage alloc] init];
+    _xmppRoster = [[XMPPRoster alloc] initWithRosterStorage:_xmppRosterStorage];  // XMPPRosterCoreDataStorage.h说不一定要用sharedInstance，因为你有可能有很多xmppStream
+    [_xmppRoster activate:_xmppStream];
+    
     // 3. 设置XMPPStream的代理，添加XMPPStreamDelegate
     [_xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    [_xmppRoster addDelegate:self delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
 }
 
 //- (void)connectToServer
@@ -110,10 +116,12 @@
 {
     // 1. 删除代理
     [_xmppStream removeDelegate:self];
+    [_xmppRoster removeDelegate:self];
     
     // 2. 取消激活在setupStream方法中激活的扩展模块
     [_xmppReconnect deactivate];
     [_xmppvCardTempModule deactivate];
+    [_xmppRoster deactivate];
     
     // 3. 断开XMPPStream的连接
     [_xmppStream disconnect];
@@ -122,6 +130,8 @@
     _xmppStream = nil;
     _xmppReconnect = nil;
     _xmppvCardTempModule = nil;
+    _xmppRoster = nil;
+    _xmppRosterStorage = nil;
 }
 
 #pragma mark - XMPPStream Delegate

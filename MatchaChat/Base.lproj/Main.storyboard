@@ -6,21 +6,29 @@
     </dependencies>
     <scenes>
         <!--联系人-->
-        <scene sceneID="OCf-pj-XV7">
+        <scene sceneID="omO-eh-4NP">
             <objects>
-                <viewController id="dTh-Aq-ubZ" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="bcY-Yt-4za"/>
-                        <viewControllerLayoutGuide type="bottom" id="K1M-ma-czG"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="cqn-sp-dNu">
+                <tableViewController id="hcI-QT-zYl" customClass="ContactsViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Y4e-CL-X3i">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="联系人" id="iFr-lj-iRt"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GrH-We-mxm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="AFF-b1-uaN">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AFF-b1-uaN" id="Ybv-Oq-HqX">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hcI-QT-zYl" id="dMF-MU-1Wu"/>
+                            <outlet property="delegate" destination="hcI-QT-zYl" id="DvV-Lh-jfh"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="联系人" id="1OW-Mp-Mb7"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SAB-yh-80L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2315" y="-64"/>
         </scene>
@@ -390,6 +398,7 @@
         <!--联系人-->
         <scene sceneID="FYK-PF-G1N">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xf0-m8-MwV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bk1-ww-Tml" customClass="NavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="联系人" id="Ybi-bi-Wc7"/>
                     <toolbarItems/>
@@ -399,10 +408,9 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="dTh-Aq-ubZ" kind="relationship" relationship="rootViewController" id="6W2-iZ-xwH"/>
+                        <segue destination="hcI-QT-zYl" kind="relationship" relationship="rootViewController" id="RwC-8M-Tep"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xf0-m8-MwV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1503" y="-64"/>
         </scene>

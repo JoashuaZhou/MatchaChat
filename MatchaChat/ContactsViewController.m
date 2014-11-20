@@ -1,0 +1,75 @@
+//
+//  ContactsViewController.m
+//  MatchaChat
+//
+//  Created by Joshua Zhou on 14/11/19.
+//  Copyright (c) 2014年 Joshua Zhou. All rights reserved.
+//
+
+#import "ContactsViewController.h"
+#import "AppDelegate.h"
+#import <CoreData/CoreData.h>
+
+@interface ContactsViewController ()
+
+@property (nonatomic, strong) NSFetchedResultsController *fetchResultController;
+
+@end
+
+@implementation ContactsViewController
+
+- (AppDelegate *)appDelegate
+{
+    return [UIApplication sharedApplication].delegate;
+}
+
+- (NSFetchedResultsController *)fetchResultController
+{
+    if (!_fetchResultController) {
+        NSManagedObjectContext *context = [[[self appDelegate] xmppRosterStorage] mainThreadManagedObjectContext];
+//        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"XMPPUserCoreDataStorageObject"];
+//        _fetchResultController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:<#(NSString *)#> cacheName:nil];
+    }
+    
+    return _fetchResultController;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 0;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    return 0;
+}
+
+/*
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    
+    // Configure the cell...
+    
+    return cell;
+}
+*/
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end
