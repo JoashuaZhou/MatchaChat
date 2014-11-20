@@ -45,6 +45,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setupSeperator];
+}
+
+- (void)setupSeperator
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 1)];
+    [view setBackgroundColor:[UIColor lightGrayColor]];
+    self.tableView.tableFooterView = view;
 }
 
 #pragma mark - Table view data source
@@ -63,6 +72,7 @@
     // Configure the cell...
     XMPPUserCoreDataStorageObject *object = [self.fetchResultController objectAtIndexPath:indexPath];
     cell.textLabel.text = object.displayName;
+    
     
     return cell;
 }
