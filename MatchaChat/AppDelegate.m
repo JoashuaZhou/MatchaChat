@@ -11,7 +11,7 @@
 #import "XMPPvCardCoreDataStorage.h"
 #import "XMPPvCardTempModule.h"
 
-@interface AppDelegate () <XMPPStreamDelegate>
+@interface AppDelegate () <XMPPStreamDelegate, XMPPRosterDelegate>
 
 @property (nonatomic, strong) CompletionBlock success;
 @property (nonatomic, strong) CompletionBlock failure;
@@ -23,6 +23,12 @@
 
 #pragma mark - AppDelegate方法
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    /* XCode 6.1的Bug，不能在Storyboard中设置 */
+    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    ((UITabBarItem *)tabBarController.tabBar.items[0]).selectedImage = [UIImage imageNamed:@"tabbar_mainframeHL"];
+    ((UITabBarItem *)tabBarController.tabBar.items[1]).selectedImage = [UIImage imageNamed:@"tabbar_contactsHL"];
+    ((UITabBarItem *)tabBarController.tabBar.items[2]).selectedImage = [UIImage imageNamed:@"tabbar_meHL"];
 
     application.statusBarStyle = UIStatusBarStyleLightContent;
     
@@ -74,6 +80,8 @@
     // 2.3 花名册模块
     _xmppRosterStorage = [[XMPPRosterCoreDataStorage alloc] init];
     _xmppRoster = [[XMPPRoster alloc] initWithRosterStorage:_xmppRosterStorage];  // XMPPRosterCoreDataStorage.h说不一定要用sharedInstance，因为你有可能有很多xmppStream
+    [_xmppRoster setAutoAcceptKnownPresenceSubscriptionRequests:YES]; // XMPP的好友机制是像新浪微博那种订阅制的，就是我关注你，你不一定要关注我。如果设置为YES，就是QQ那种双向订阅的。
+    [_xmppRoster setAutoFetchRoster:YES]; // 如果好友更新名片，就自动从服务器更新。如果设置为NO，就不会自动更新，要每次登陆才更新
     [_xmppRoster activate:_xmppStream];
     
     // 3. 设置XMPPStream的代理，添加XMPPStreamDelegate
@@ -193,6 +201,16 @@
     self.failure(@"账户注册失败！");
 }
 
+- (void)xmppRoster:(XMPPRoster *)sender didReceivePresenceSubscriptionRequest:(XMPPPresence *)presence
+{
+    NSLog(@"收到用户请求：%@", presence);
+    
+    if ([presence.type isEqualToString:@"subscribe"]) {
+        XMPPJID *from = [presence from];
+        [_xmppRoster acceptPresenceSubscriptionRequestFrom:from andAddToRoster:YES];    // 自动接受好友申请
+    }
+}
+
 #pragma mark - 公有方法
 - (void)connectWithAccountName:(NSString *)accountName Password:(NSString *)password ServerName:(NSString *)serverName Success:(CompletionBlock)success Failure:(CompletionBlock)failure
 {
@@ -207,7 +225,7 @@
     
     // 2. 获取账号、服务器名称(连接成功才需要密码，用于验证)
     self.password = password;
-    serverName = @"192.168.2.18";//@"joshuas-macbook-pro.local";
+    serverName = @"joshuas-macbook-pro.local";
     accountName = [accountName stringByAppendingString:[NSString stringWithFormat:@"@%@", serverName]];
     
     // 3. 设置JID、服务器名称

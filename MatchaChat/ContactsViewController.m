@@ -10,9 +10,10 @@
 #import "AppDelegate.h"
 #import <CoreData/CoreData.h>
 
-@interface ContactsViewController () <NSFetchedResultsControllerDelegate>
+@interface ContactsViewController () <NSFetchedResultsControllerDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchResultController;
+@property (nonatomic, weak) UIVisualEffectView *shadowView;
 
 @end
 
@@ -47,7 +48,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setupSeperator];
+//    [self setupSeperator];
 }
 
 - (void)setupSeperator
@@ -55,6 +56,79 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 1)];
     [view setBackgroundColor:[UIColor lightGrayColor]];
     self.tableView.tableFooterView = view;
+}
+
+- (IBAction)addContact:(UIBarButtonItem *)sender {
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    effectView.frame = self.view.window.bounds;
+    effectView.alpha = 0;
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(exitAddContact)];
+    [effectView addGestureRecognizer:tapRecognizer];
+    [self.view.window addSubview:effectView];   // 要挡住navBar和tabBar就要在window上addSubView
+    self.shadowView = effectView;
+    
+    UIView *colorView = [[UIView alloc] init];
+    colorView.backgroundColor = [UIColor colorWithRed:79/255.0 green:167/255.0 blue:105/255.0 alpha:1.0];
+    colorView.layer.cornerRadius = 12.0;
+    colorView.center = effectView.center;
+    colorView.bounds = CGRectMake(0, 0, 250, 100);
+    [effectView addSubview:colorView];
+    
+    UITextField *textField = [[UITextField alloc] init];
+    textField.borderStyle = UITextBorderStyleRoundedRect;
+    textField.center = CGPointMake(colorView.bounds.size.width / 2, colorView.bounds.size.height * 0.6);
+    textField.bounds = CGRectMake(0, 0, 200, 30);
+    NSAttributedString *placeholder = [[NSAttributedString alloc] initWithString:@"用户名" attributes:@{NSForegroundColorAttributeName: [UIColor lightGrayColor], NSFontAttributeName: [UIFont systemFontOfSize:15.0]}];
+    textField.attributedPlaceholder = placeholder;
+    textField.delegate = self;
+    [colorView addSubview:textField];
+    
+    UILabel *tipLabel = [[UILabel alloc] init];
+    NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:@"添加好友" attributes:@{NSForegroundColorAttributeName: [UIColor lightGrayColor], NSFontAttributeName: [UIFont systemFontOfSize:50.0]}];
+    tipLabel.attributedText = attributedText;
+    tipLabel.center = CGPointMake(effectView.center.x, colorView.frame.origin.y);
+    tipLabel.bounds = CGRectMake(0, 0, 200, 100);
+    tipLabel.textAlignment = NSTextAlignmentCenter;
+    [effectView addSubview:tipLabel];
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        effectView.alpha = 1.0;
+    }];
+}
+
+- (void)exitAddContact
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        self.shadowView.alpha = 0;
+    } completion:^(BOOL finished) {
+        [self.shadowView removeFromSuperview];
+    }];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (![textField.text isEqualToString:@""]) {
+        [self addContactWithName:textField.text];
+    }
+    return YES;
+}
+
+- (void)addContactWithName:(NSString *)name
+{
+    NSRange range = [name rangeOfString:@"@"];
+    if (range.location == NSNotFound) {
+        name = [NSString stringWithFormat:@"%@@%@", name, @"joshuas-macbook-pro.local"];
+    }
+    
+    // 判断是否添加自己?
+    
+    // 判断是否已经是好友
+    
+    // 发送添加好友请求
+    [[[self appDelegate] xmppRoster] subscribePresenceToUser:[XMPPJID jidWithString:name]];
+    
+    [self exitAddContact];
 }
 
 #pragma mark - Table view data source

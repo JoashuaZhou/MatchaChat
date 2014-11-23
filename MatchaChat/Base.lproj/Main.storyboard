@@ -27,7 +27,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="联系人" id="1OW-Mp-Mb7">
-                        <barButtonItem key="rightBarButtonItem" image="contacts_add_friend" id="yBm-PS-q5r"/>
+                        <barButtonItem key="rightBarButtonItem" image="contacts_add_friend" id="yBm-PS-q5r">
+                            <connections>
+                                <action selector="addContact:" destination="hcI-QT-zYl" id="fqh-eQ-8h8"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SAB-yh-80L" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -292,7 +296,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="wjs-WE-vhm">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="wjs-WE-vhm">
                                 <rect key="frame" x="32" y="96" width="536" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -300,7 +304,7 @@
                                     <outlet property="delegate" destination="yfW-Cz-1wA" id="efh-Pa-geq"/>
                                 </connections>
                             </textField>
-                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0U8-CT-T6v">
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0U8-CT-T6v">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>

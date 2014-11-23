@@ -23,7 +23,12 @@
 //    UITabBarItem *tabbarItem = [UITabBarItem appearance];
 //    [tabbarItem setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]} forState:UIControlStateNormal];   // 非选中tabbaritem的颜色
 //    [tabbarItem setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:79/255.0 green:167/255.0 blue:105/255.0 alpha:1.0]} forState:UIControlStateSelected];    // 选中的tabbaritem的颜色
-    
+
 }
+
+//- (void)viewDidLoad
+//{
+//    self.tabBar
+//}
 
 @end
