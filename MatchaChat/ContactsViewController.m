@@ -153,6 +153,27 @@
     return cell;
 }
 
+#pragma mark - 在线状态
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    id <NSFetchedResultsSectionInfo> info = self.fetchResultController.sections[section];
+    int state = [info.name intValue];
+    NSString *stateName = nil;
+    switch (state) {    // ctrl + i重排代码
+        case 0:
+            stateName = @"上线";
+            break;
+        case 1:
+            stateName = @"离开";
+            break;
+        case 2:
+            stateName = @"下线";
+            break;
+    }
+    
+    return stateName;
+}
+
 #pragma mark - 以下两个方法可以删除好友
 /* 删除好友 */
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
