@@ -61,6 +61,8 @@
 		42126AFE1A14815300B14BB4 /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 42126AFD1A14815300B14BB4 /* libresolv.dylib */; };
 		42126B021A149BBF00B14BB4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42126B011A149BBF00B14BB4 /* LoginViewController.m */; };
 		421E438E1A1D6E7100528FC1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 421E438D1A1D6E7100528FC1 /* CoreData.framework */; };
+		421E43901A1DD9F900528FC1 /* ContactsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421E438F1A1DD9F900528FC1 /* ContactsTableViewCell.xib */; };
+		421E43961A1DDA4F00528FC1 /* ContactsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 421E43951A1DDA4F00528FC1 /* ContactsTableViewCell.m */; };
 		42202E731A19CA2000907ACC /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42202E721A19CA2000907ACC /* ProfileViewController.m */; };
 		42316A011A162B1C003E58AF /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42316A001A162B1C003E58AF /* NavigationController.m */; };
 		42316A071A162DD2003E58AF /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42316A061A162DD2003E58AF /* TabBarViewController.m */; };
@@ -286,6 +288,9 @@
 		42126B001A149BBF00B14BB4 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		42126B011A149BBF00B14BB4 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		421E438D1A1D6E7100528FC1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		421E438F1A1DD9F900528FC1 /* ContactsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsTableViewCell.xib; sourceTree = "<group>"; };
+		421E43941A1DDA4F00528FC1 /* ContactsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewCell.h; sourceTree = "<group>"; };
+		421E43951A1DDA4F00528FC1 /* ContactsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewCell.m; sourceTree = "<group>"; };
 		42202E711A19CA2000907ACC /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		42202E721A19CA2000907ACC /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		42202E741A19CF1500907ACC /* GlobalHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlobalHeader.pch; path = MatchaChat/GlobalHeader.pch; sourceTree = "<group>"; };
@@ -548,6 +553,7 @@
 				42126A3A1A1464BF00B14BB4 /* AppDelegate.h */,
 				42126A3B1A1464BF00B14BB4 /* AppDelegate.m */,
 				42126A401A1464BF00B14BB4 /* Main.storyboard */,
+				421E43971A1DDD2E00528FC1 /* View */,
 				427F6A8E1A1C6FE000B7E9DA /* ContactsViewController.h */,
 				427F6A8F1A1C6FE000B7E9DA /* ContactsViewController.m */,
 				42202E711A19CA2000907ACC /* ProfileViewController.h */,
@@ -858,6 +864,16 @@
 				42126AF51A14813500B14BB4 /* XMPPTimer.m */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		421E43971A1DDD2E00528FC1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				421E43941A1DDA4F00528FC1 /* ContactsTableViewCell.h */,
+				421E43951A1DDA4F00528FC1 /* ContactsTableViewCell.m */,
+				421E438F1A1DD9F900528FC1 /* ContactsTableViewCell.xib */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		42316A081A1647BD003E58AF /* Other */ = {
@@ -1563,6 +1579,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42126A9C1A1480D800B14BB4 /* build-libidn.sh in Resources */,
+				421E43901A1DD9F900528FC1 /* ContactsTableViewCell.xib in Resources */,
 				42126A421A1464BF00B14BB4 /* Main.storyboard in Resources */,
 				42126A471A1464BF00B14BB4 /* LaunchScreen.xib in Resources */,
 				42126A7B1A147E8300B14BB4 /* README.txt in Resources */,
@@ -1589,6 +1606,7 @@
 				42126AF81A14813500B14BB4 /* RFImageToDataTransformer.m in Sources */,
 				42126AC91A14811E00B14BB4 /* NSNumber+XMPP.m in Sources */,
 				42A6C41D1A15F3D500465725 /* XMPPStreamManagement.m in Sources */,
+				421E43961A1DDA4F00528FC1 /* ContactsTableViewCell.m in Sources */,
 				42126ABB1A14810D00B14BB4 /* XMPPDeprecatedPlainAuthentication.m in Sources */,
 				42126A7A1A147E8300B14BB4 /* DDMultiFormatter.m in Sources */,
 				42A6C40E1A15F3D500465725 /* XMPPCapsResourceCoreDataStorageObject.m in Sources */,

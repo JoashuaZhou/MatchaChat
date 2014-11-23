@@ -207,7 +207,7 @@
     
     // 2. 获取账号、服务器名称(连接成功才需要密码，用于验证)
     self.password = password;
-    serverName = @"joshuas-macbook-pro.local";
+    serverName = @"192.168.2.18";//@"joshuas-macbook-pro.local";
     accountName = [accountName stringByAppendingString:[NSString stringWithFormat:@"@%@", serverName]];
     
     // 3. 设置JID、服务器名称

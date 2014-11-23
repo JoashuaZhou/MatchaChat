@@ -10,7 +10,7 @@
 #import "AppDelegate.h"
 #import <CoreData/CoreData.h>
 
-@interface ContactsViewController ()
+@interface ContactsViewController () <NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchResultController;
 
@@ -31,6 +31,7 @@
         NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"displayName" ascending:YES];
         fetchRequest.sortDescriptors = @[sort];
         _fetchResultController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:@"displayName" cacheName:@"Contacts"];
+        _fetchResultController.delegate = self;
         
         /* 执行一下fetch */
         NSError *error = nil;
@@ -62,6 +63,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    /* 这里返回的是一个id <NSFetchedResultsSectionInfo>，而不是NSArray */
     id <NSFetchedResultsSectionInfo> sectionInfo = self.fetchResultController.sections[section];
     return [sectionInfo numberOfObjects];
 }
@@ -72,9 +74,15 @@
     // Configure the cell...
     XMPPUserCoreDataStorageObject *object = [self.fetchResultController objectAtIndexPath:indexPath];
     cell.textLabel.text = object.displayName;
-    
+    cell.imageView.image = [UIImage imageNamed:@"Male"];//object.photo;
     
     return cell;
+}
+
+/* fetchResultController获得新数据时重新刷新表格 */
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView reloadData];
 }
 
 /*

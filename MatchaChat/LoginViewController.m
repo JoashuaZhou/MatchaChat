@@ -50,7 +50,7 @@
         } completion:^(BOOL finished) {
             [UIView animateWithDuration:0.5 animations:^{
                 self.declarationTextField.alpha = 1.0;
-                self.declarationTextField.transform = CGAffineTransformMakeTranslation(0, -50);
+                self.declarationTextField.transform = CGAffineTransformMakeTranslation(0, -16);
             }];
         }];
     }];
