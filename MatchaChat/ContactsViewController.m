@@ -153,6 +153,28 @@
     return cell;
 }
 
+#pragma mark - 以下两个方法可以删除好友
+/* 删除好友 */
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+/* 删除后要提交给tableView编辑结果(按下delete之后调用) */
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    /* 在MVC中，除了在tableView中删除，还要在Model中删除，不然一刷新tableView数据又回来了 */
+    if (editingStyle == UITableViewCellEditingStyleDelete) {  // 因为有很多编辑状态，不止是删除，所以要判断一下
+        XMPPUserCoreDataStorageObject *object = [self.fetchResultController objectAtIndexPath:indexPath];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"确定删除该联系人?" message:[NSString stringWithFormat:@"%@", object.displayName] preferredStyle:UIAlertControllerStyleActionSheet];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+            [[[self appDelegate] xmppRoster] removeUser:object.jid];
+        }]];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+}
+
 /* fetchResultController获得新数据时重新刷新表格 */
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
