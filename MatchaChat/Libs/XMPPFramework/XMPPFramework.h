@@ -63,10 +63,10 @@
 //
 //#import "XMPPTransports.h"
 //
-//#import "XMPPCapabilities.h"
-//#import "XMPPCapabilitiesCoreDataStorage.h"
+#import "XMPPCapabilities.h"
+#import "XMPPCapabilitiesCoreDataStorage.h"
 //
-//#import "XMPPvCardAvatarModule.h"
+#import "XMPPvCardAvatarModule.h"
 //
 //#import "XMPPMessage+XEP_0184.h"
 //

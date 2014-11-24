@@ -16,6 +16,7 @@
 @property (nonatomic, strong) CompletionBlock success;
 @property (nonatomic, strong) CompletionBlock failure;
 @property (nonatomic, copy) NSString *password;
+@property (nonatomic, strong) XMPPCapabilities *xmppCapabilities;
 
 @end
 
@@ -75,7 +76,9 @@
     
     // 2.2 电子名片模块
     _xmppvCardTempModule = [[XMPPvCardTempModule alloc] initWithvCardStorage:[XMPPvCardCoreDataStorage sharedInstance]];    // 看XMPPvCardCoreDataStorage.h他会告诉你最好用单例，即sharedInstance
+    _xmppvCardAvatarModule = [[XMPPvCardAvatarModule alloc] initWithvCardTempModule:_xmppvCardTempModule];
     [_xmppvCardTempModule activate:_xmppStream];
+    [_xmppvCardAvatarModule activate:_xmppStream];
     
     // 2.3 花名册模块
     _xmppRosterStorage = [[XMPPRosterCoreDataStorage alloc] init];
@@ -83,6 +86,10 @@
     [_xmppRoster setAutoAcceptKnownPresenceSubscriptionRequests:YES]; // XMPP的好友机制是像新浪微博那种订阅制的，就是我关注你，你不一定要关注我。如果设置为YES，就是QQ那种双向订阅的。
     [_xmppRoster setAutoFetchRoster:YES]; // 如果好友更新名片，就自动从服务器更新。如果设置为NO，就不会自动更新，要每次登陆才更新
     [_xmppRoster activate:_xmppStream];
+    
+    // 2.4 实体能力模块(增强性能)
+    _xmppCapabilities = [[XMPPCapabilities alloc] initWithCapabilitiesStorage:[[XMPPCapabilitiesCoreDataStorage alloc] init]];
+    [_xmppCapabilities activate:_xmppStream];
     
     // 3. 设置XMPPStream的代理，添加XMPPStreamDelegate
     [_xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
@@ -130,6 +137,8 @@
     [_xmppReconnect deactivate];
     [_xmppvCardTempModule deactivate];
     [_xmppRoster deactivate];
+    [_xmppCapabilities deactivate];
+    [_xmppvCardAvatarModule deactivate];
     
     // 3. 断开XMPPStream的连接
     [_xmppStream disconnect];
@@ -140,6 +149,8 @@
     _xmppvCardTempModule = nil;
     _xmppRoster = nil;
     _xmppRosterStorage = nil;
+    _xmppCapabilities = nil;
+    _xmppvCardAvatarModule = nil;
 }
 
 #pragma mark - XMPPStream Delegate

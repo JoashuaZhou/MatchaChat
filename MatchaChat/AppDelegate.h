@@ -19,6 +19,7 @@ typedef void(^CompletionBlock)(NSString *message);  // 定义一个block
 @property (nonatomic, strong) XMPPvCardTempModule *xmppvCardTempModule;
 @property (nonatomic, strong) XMPPRosterCoreDataStorage *xmppRosterStorage;
 @property (nonatomic, strong) XMPPRoster *xmppRoster;
+@property (nonatomic, strong) XMPPvCardAvatarModule *xmppvCardAvatarModule;
 
 @property (nonatomic, assign, getter=isRegistered) BOOL registration;
 

@@ -31,7 +31,7 @@
         NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"XMPPUserCoreDataStorageObject"];
         NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"displayName" ascending:YES];
         fetchRequest.sortDescriptors = @[sort];
-        _fetchResultController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:@"displayName" cacheName:@"Contacts"];
+        _fetchResultController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:@"displayName" cacheName:nil];
         _fetchResultController.delegate = self;
         
         /* 执行一下fetch */
@@ -124,11 +124,20 @@
     // 判断是否添加自己?
     
     // 判断是否已经是好友
-    
+    if ([self isAlreadyContact:name]) {
+        NSLog(@"已经是好友了");
+        return;
+    }
+
     // 发送添加好友请求
     [[[self appDelegate] xmppRoster] subscribePresenceToUser:[XMPPJID jidWithString:name]];
     
     [self exitAddContact];
+}
+
+- (BOOL)isAlreadyContact:(NSString *)name
+{
+    return [[[self appDelegate] xmppRosterStorage] userExistsWithJID:[XMPPJID jidWithString:name] xmppStream:[[self appDelegate] xmppStream]];
 }
 
 #pragma mark - Table view data source
@@ -148,7 +157,8 @@
     // Configure the cell...
     XMPPUserCoreDataStorageObject *object = [self.fetchResultController objectAtIndexPath:indexPath];
     cell.textLabel.text = object.displayName;
-    cell.imageView.image = [UIImage imageNamed:@"Male"];//object.photo;
+    NSData *photoData = [[[self appDelegate] xmppvCardAvatarModule] photoDataForJID:object.jid];
+    cell.imageView.image = [UIImage imageWithData:photoData];
     
     return cell;
 }
@@ -161,7 +171,7 @@
     NSString *stateName = nil;
     switch (state) {    // ctrl + i重排代码
         case 0:
-            stateName = @"上线";
+            stateName = @"在线";
             break;
         case 1:
             stateName = @"离开";
@@ -170,7 +180,7 @@
             stateName = @"下线";
             break;
     }
-    
+
     return stateName;
 }
 
@@ -187,7 +197,7 @@
     /* 在MVC中，除了在tableView中删除，还要在Model中删除，不然一刷新tableView数据又回来了 */
     if (editingStyle == UITableViewCellEditingStyleDelete) {  // 因为有很多编辑状态，不止是删除，所以要判断一下
         XMPPUserCoreDataStorageObject *object = [self.fetchResultController objectAtIndexPath:indexPath];
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"确定删除该联系人?" message:[NSString stringWithFormat:@"%@", object.displayName] preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"确定删除该联系人?" message:[NSString stringWithFormat:@"%@", object.nickname] preferredStyle:UIAlertControllerStyleActionSheet];
         [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
             [[[self appDelegate] xmppRoster] removeUser:object.jid];
         }]];
