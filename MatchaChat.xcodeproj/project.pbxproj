@@ -66,6 +66,7 @@
 		42202E731A19CA2000907ACC /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42202E721A19CA2000907ACC /* ProfileViewController.m */; };
 		42316A011A162B1C003E58AF /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42316A001A162B1C003E58AF /* NavigationController.m */; };
 		42316A071A162DD2003E58AF /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42316A061A162DD2003E58AF /* TabBarViewController.m */; };
+		426E622B1A236D1F00A52FCA /* JZNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 426E622A1A236D1F00A52FCA /* JZNotificationView.m */; };
 		427F6A871A1ADA3500B7E9DA /* ProfileSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 427F6A861A1ADA3500B7E9DA /* ProfileSettingViewController.m */; };
 		427F6A8B1A1C68E600B7E9DA /* UIImage+Joshua.m in Sources */ = {isa = PBXBuildFile; fileRef = 427F6A8A1A1C68E600B7E9DA /* UIImage+Joshua.m */; };
 		427F6A901A1C6FE000B7E9DA /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 427F6A8F1A1C6FE000B7E9DA /* ContactsViewController.m */; };
@@ -298,6 +299,8 @@
 		42316A001A162B1C003E58AF /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		42316A051A162DD2003E58AF /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		42316A061A162DD2003E58AF /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
+		426E62291A236D1F00A52FCA /* JZNotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZNotificationView.h; sourceTree = "<group>"; };
+		426E622A1A236D1F00A52FCA /* JZNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZNotificationView.m; sourceTree = "<group>"; };
 		427F6A851A1ADA3500B7E9DA /* ProfileSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileSettingViewController.h; sourceTree = "<group>"; };
 		427F6A861A1ADA3500B7E9DA /* ProfileSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileSettingViewController.m; sourceTree = "<group>"; };
 		427F6A891A1C68E600B7E9DA /* UIImage+Joshua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Joshua.h"; sourceTree = "<group>"; };
@@ -601,6 +604,7 @@
 		42126A5C1A1464E500B14BB4 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				426E62211A23620600A52FCA /* JZNotificationView */,
 				42126A5D1A1464F300B14BB4 /* XMPPFramework */,
 			);
 			path = Libs;
@@ -895,6 +899,15 @@
 				42A6C42C1A15FE1E00465725 /* LoginViewControllerView.xib */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		426E62211A23620600A52FCA /* JZNotificationView */ = {
+			isa = PBXGroup;
+			children = (
+				426E62291A236D1F00A52FCA /* JZNotificationView.h */,
+				426E622A1A236D1F00A52FCA /* JZNotificationView.m */,
+			);
+			path = JZNotificationView;
 			sourceTree = "<group>";
 		};
 		427F6A881A1C68C600B7E9DA /* Category */ = {
@@ -1712,6 +1725,7 @@
 				42126B021A149BBF00B14BB4 /* LoginViewController.m in Sources */,
 				42126A771A147E8300B14BB4 /* DDTTYLogger.m in Sources */,
 				42A6C42B1A15F3D500465725 /* NSXMLElement+XEP_0335.m in Sources */,
+				426E622B1A236D1F00A52FCA /* JZNotificationView.m in Sources */,
 				42A6C4201A15F3D500465725 /* XMPPAutoTime.m in Sources */,
 				42A6C3DF1A15F3D500465725 /* XMPPIQ+LastActivity.m in Sources */,
 				42A6C4261A15F3D500465725 /* XMPPMessage+XEP_0280.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "AppDelegate.h"
+#import "JZNotificationView.h"
 
 #define adaptKeyboardHeight 120
 @interface LoginViewController () <UITextFieldDelegate>
@@ -92,6 +93,7 @@
 
 - (void)showErrorMessage
 {
+    [JZNotificationView showFailureWithHeadline:@"登录失败" message:@"请检查一下你的用户和密码！"];
     self.errorMessageTextField.hidden = NO;
     
     CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
