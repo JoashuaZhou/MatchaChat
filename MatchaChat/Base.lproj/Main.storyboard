@@ -471,11 +471,20 @@
                                     <constraint firstAttribute="height" constant="44" id="Vip-XF-9mr"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cNE-VK-jE6">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cNE-VK-jE6">
                                 <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Chat Cell" id="w1s-xt-FRD">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w1s-xt-FRD" id="dKr-sX-h66">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
-                                    <outlet property="delegate" destination="Lda-uP-F4P" id="dYY-lq-OJP"/>
+                                    <outlet property="dataSource" destination="Lda-uP-F4P" id="pfj-JT-uOw"/>
+                                    <outlet property="delegate" destination="Lda-uP-F4P" id="hGN-G6-B4k"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -493,6 +502,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="inputTextField" destination="637-IH-Dbx" id="gdY-5V-30V"/>
+                        <outlet property="tableView" destination="cNE-VK-jE6" id="gYc-H0-Dmd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RZm-Im-sHp" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -91,6 +91,11 @@
     _xmppCapabilities = [[XMPPCapabilities alloc] initWithCapabilitiesStorage:[[XMPPCapabilitiesCoreDataStorage alloc] init]];
     [_xmppCapabilities activate:_xmppStream];
     
+    // 2.5 文本消息
+    _xmppMessageArchivingCoreDataStorage = [[XMPPMessageArchivingCoreDataStorage alloc] init];
+    _xmppMessageArchiving = [[XMPPMessageArchiving alloc] initWithMessageArchivingStorage:_xmppMessageArchivingCoreDataStorage];
+    [_xmppMessageArchiving activate:_xmppStream];
+    
     // 3. 设置XMPPStream的代理，添加XMPPStreamDelegate
     [_xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
     [_xmppRoster addDelegate:self delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
@@ -139,6 +144,7 @@
     [_xmppRoster deactivate];
     [_xmppCapabilities deactivate];
     [_xmppvCardAvatarModule deactivate];
+    [_xmppMessageArchiving deactivate];
     
     // 3. 断开XMPPStream的连接
     [_xmppStream disconnect];
@@ -151,6 +157,8 @@
     _xmppRosterStorage = nil;
     _xmppCapabilities = nil;
     _xmppvCardAvatarModule = nil;
+    _xmppMessageArchiving = nil;
+    _xmppMessageArchivingCoreDataStorage = nil;
 }
 
 #pragma mark - XMPPStream Delegate
@@ -210,6 +218,11 @@
     self.registration = NO;
     
     self.failure(@"账户注册失败！");
+}
+
+- (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message
+{
+    NSLog(@"%@", message);  // 这里还可以返回正在输入和停止输入的状态
 }
 
 - (void)xmppRoster:(XMPPRoster *)sender didReceivePresenceSubscriptionRequest:(XMPPPresence *)presence
