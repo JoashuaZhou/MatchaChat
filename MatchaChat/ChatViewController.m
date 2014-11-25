@@ -31,7 +31,14 @@
 
 - (void)keyboardWillShow:(NSNotification *)notification
 {
+    NSDictionary *userInfo = notification.userInfo;
+    CGFloat beginY= [userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].origin.y;
+    CGFloat endY = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue].origin.y;
+    CGFloat animationDuration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] floatValue];
 
+    [UIView animateWithDuration:animationDuration animations:^{
+        self.view.transform = CGAffineTransformTranslate(self.view.transform, 0, endY - beginY);
+    }];
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification
