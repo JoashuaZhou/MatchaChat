@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42063B921A241A7A00E4DA1E /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42063B911A241A7A00E4DA1E /* ChatViewController.m */; };
+		42063B951A24547400E4DA1E /* TrancluentNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42063B941A24547400E4DA1E /* TrancluentNavigationController.m */; };
 		42126A391A1464BF00B14BB4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 42126A381A1464BF00B14BB4 /* main.m */; };
 		42126A3C1A1464BF00B14BB4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42126A3B1A1464BF00B14BB4 /* AppDelegate.m */; };
 		42126A421A1464BF00B14BB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42126A401A1464BF00B14BB4 /* Main.storyboard */; };
@@ -179,6 +181,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		42063B901A241A7A00E4DA1E /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		42063B911A241A7A00E4DA1E /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
+		42063B931A24547400E4DA1E /* TrancluentNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrancluentNavigationController.h; sourceTree = "<group>"; };
+		42063B941A24547400E4DA1E /* TrancluentNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrancluentNavigationController.m; sourceTree = "<group>"; };
 		42126A331A1464BF00B14BB4 /* MatchaChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchaChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42126A371A1464BF00B14BB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42126A381A1464BF00B14BB4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -557,6 +563,8 @@
 				42126A3B1A1464BF00B14BB4 /* AppDelegate.m */,
 				42126A401A1464BF00B14BB4 /* Main.storyboard */,
 				421E43971A1DDD2E00528FC1 /* View */,
+				42063B901A241A7A00E4DA1E /* ChatViewController.h */,
+				42063B911A241A7A00E4DA1E /* ChatViewController.m */,
 				427F6A8E1A1C6FE000B7E9DA /* ContactsViewController.h */,
 				427F6A8F1A1C6FE000B7E9DA /* ContactsViewController.m */,
 				42202E711A19CA2000907ACC /* ProfileViewController.h */,
@@ -885,6 +893,8 @@
 			children = (
 				423169FF1A162B1C003E58AF /* NavigationController.h */,
 				42316A001A162B1C003E58AF /* NavigationController.m */,
+				42063B931A24547400E4DA1E /* TrancluentNavigationController.h */,
+				42063B941A24547400E4DA1E /* TrancluentNavigationController.m */,
 				42316A051A162DD2003E58AF /* TabBarViewController.h */,
 				42316A061A162DD2003E58AF /* TabBarViewController.m */,
 			);
@@ -1669,7 +1679,9 @@
 				42A6C3F51A15F3D500465725 /* XMPPvCardTemp.m in Sources */,
 				42126A941A147FCA00B14BB4 /* DDXMLNode.m in Sources */,
 				42126A741A147E8300B14BB4 /* DDASLLogger.m in Sources */,
+				42063B921A241A7A00E4DA1E /* ChatViewController.m in Sources */,
 				42A6C3E91A15F3D500465725 /* XMPPRoomOccupantHybridMemoryStorageObject.m in Sources */,
+				42063B951A24547400E4DA1E /* TrancluentNavigationController.m in Sources */,
 				42A6C3D81A15F3D500465725 /* XMPPRosterMemoryStorage.m in Sources */,
 				42A6C3F21A15F3D500465725 /* XMPPvCardCoreDataStorage.m in Sources */,
 				42A6C40A1A15F3D500465725 /* NSString+XEP_0106.m in Sources */,

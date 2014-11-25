@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -12,7 +12,6 @@
                 <outlet property="loginView" destination="hKi-gw-xj0" id="VgH-ji-fLf"/>
                 <outlet property="logoTextField" destination="0aP-3M-oHR" id="YLe-yB-AzB"/>
                 <outlet property="passwordTextField" destination="arz-DN-QWx" id="qmh-6K-Xkn"/>
-                <outlet property="serverNameTextField" destination="eOO-Qu-lm5" id="Y9X-Bl-oQ6"/>
                 <outlet property="view" destination="iwp-31-0BQ" id="r2c-n8-ctF"/>
             </connections>
         </placeholder>
@@ -25,7 +24,7 @@
                     <rect key="frame" x="150" y="150" width="300" height="300"/>
                     <subviews>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pph-7R-Rpb">
-                            <rect key="frame" x="184" y="255" width="32" height="32"/>
+                            <rect key="frame" x="184" y="209" width="32" height="32"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                             <state key="normal" title="注册">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -35,7 +34,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpG-LO-uWU">
-                            <rect key="frame" x="84" y="255" width="32" height="32"/>
+                            <rect key="frame" x="84" y="209" width="32" height="32"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                             <state key="normal" title="登录">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -57,13 +56,8 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="服务器名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eOO-Qu-lm5">
-                            <rect key="frame" x="40" y="185" width="220" height="30"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✕ 登陆信息错误，登录失败" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToB-qu-gak">
-                            <rect key="frame" x="40" y="223" width="220" height="21"/>
+                            <rect key="frame" x="40" y="181" width="220" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -71,22 +65,18 @@
                     </subviews>
                     <constraints>
                         <constraint firstItem="8Uj-lL-xSX" firstAttribute="trailing" secondItem="arz-DN-QWx" secondAttribute="trailing" id="9ag-Mx-hEO"/>
-                        <constraint firstItem="ToB-qu-gak" firstAttribute="top" secondItem="eOO-Qu-lm5" secondAttribute="bottom" constant="8" id="BS8-FN-qrC"/>
+                        <constraint firstItem="ToB-qu-gak" firstAttribute="top" secondItem="arz-DN-QWx" secondAttribute="bottom" constant="16" id="HUX-Z5-ep7"/>
                         <constraint firstAttribute="width" constant="300" id="IIy-YX-2PV"/>
-                        <constraint firstItem="mpG-LO-uWU" firstAttribute="top" secondItem="eOO-Qu-lm5" secondAttribute="bottom" constant="40" id="Og6-Tl-Uf4"/>
                         <constraint firstAttribute="centerY" secondItem="arz-DN-QWx" secondAttribute="centerY" id="Wi7-CQ-u9B"/>
                         <constraint firstAttribute="centerX" secondItem="mpG-LO-uWU" secondAttribute="centerX" constant="50" id="X23-i5-oPo"/>
-                        <constraint firstItem="8Uj-lL-xSX" firstAttribute="trailing" secondItem="eOO-Qu-lm5" secondAttribute="trailing" id="ZVv-XP-bOd"/>
                         <constraint firstAttribute="height" constant="300" id="Zlp-3s-6G1"/>
                         <constraint firstItem="arz-DN-QWx" firstAttribute="top" secondItem="8Uj-lL-xSX" secondAttribute="bottom" constant="20" id="cDf-Aq-7tw"/>
                         <constraint firstItem="pph-7R-Rpb" firstAttribute="centerX" secondItem="hKi-gw-xj0" secondAttribute="centerX" constant="50" id="dfj-Gg-1Ua"/>
                         <constraint firstItem="mpG-LO-uWU" firstAttribute="baseline" secondItem="pph-7R-Rpb" secondAttribute="baseline" id="gEW-Ta-afZ"/>
-                        <constraint firstItem="8Uj-lL-xSX" firstAttribute="leading" secondItem="eOO-Qu-lm5" secondAttribute="leading" id="gWb-p7-nfJ"/>
                         <constraint firstItem="arz-DN-QWx" firstAttribute="leading" secondItem="ToB-qu-gak" secondAttribute="leading" id="jPS-eF-mxb"/>
                         <constraint firstItem="mpG-LO-uWU" firstAttribute="top" secondItem="ToB-qu-gak" secondAttribute="bottom" constant="11" id="l1q-bi-4cd"/>
                         <constraint firstItem="8Uj-lL-xSX" firstAttribute="leading" secondItem="arz-DN-QWx" secondAttribute="leading" id="mzs-rL-RL6"/>
                         <constraint firstItem="arz-DN-QWx" firstAttribute="trailing" secondItem="ToB-qu-gak" secondAttribute="trailing" id="tix-Kn-ydU"/>
-                        <constraint firstItem="eOO-Qu-lm5" firstAttribute="top" secondItem="arz-DN-QWx" secondAttribute="bottom" constant="20" id="wC6-Yp-mwq"/>
                         <constraint firstAttribute="centerX" secondItem="arz-DN-QWx" secondAttribute="centerX" id="wqU-FK-596"/>
                     </constraints>
                 </view>

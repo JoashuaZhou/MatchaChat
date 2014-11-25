@@ -9,6 +9,7 @@
 #import "ContactsViewController.h"
 #import "AppDelegate.h"
 #import <CoreData/CoreData.h>
+#import "ChatViewController.h"
 
 @interface ContactsViewController () <NSFetchedResultsControllerDelegate, UITextFieldDelegate>
 
@@ -128,6 +129,10 @@
         NSLog(@"已经是好友了");
         return;
     }
+    
+//    [self.view removeConstraint:<#(NSLayoutConstraint *)#>];
+//    [self.view layoutIfNeeded];
+    // hide bottom bar on push
 
     // 发送添加好友请求
     [[[self appDelegate] xmppRoster] subscribePresenceToUser:[XMPPJID jidWithString:name]];
@@ -163,26 +168,32 @@
     return cell;
 }
 
-#pragma mark - 在线状态
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    id <NSFetchedResultsSectionInfo> info = self.fetchResultController.sections[section];
-    int state = [info.name intValue];
-    NSString *stateName = nil;
-    switch (state) {    // ctrl + i重排代码
-        case 0:
-            stateName = @"在线";
-            break;
-        case 1:
-            stateName = @"离开";
-            break;
-        case 2:
-            stateName = @"下线";
-            break;
-    }
-
-    return stateName;
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:@"Chat Segue" sender:cell];
 }
+
+#pragma mark - 在线状态
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    id <NSFetchedResultsSectionInfo> info = self.fetchResultController.sections[section];
+//    int state = [info.name intValue];
+//    NSString *stateName = nil;
+//    switch (state) {    // ctrl + i重排代码
+//        case 0:
+//            stateName = @"在线";
+//            break;
+//        case 1:
+//            stateName = @"离开";
+//            break;
+//        case 2:
+//            stateName = @"下线";
+//            break;
+//    }
+//
+//    return stateName;
+//}
 
 #pragma mark - 以下两个方法可以删除好友
 /* 删除好友 */
@@ -212,14 +223,14 @@
     [self.tableView reloadData];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    ChatViewController *cvc = (ChatViewController *)segue.destinationViewController;
+    UITableViewCell *cell = (UITableViewCell *)sender;
+    cvc.headline = cell.textLabel.text;
 }
-*/
 
 @end

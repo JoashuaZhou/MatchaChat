@@ -1,23 +1,23 @@
 //
-//  NavigationController.m
+//  TrancluentNavigationController.m
 //  MatchaChat
 //
-//  Created by Joshua Zhou on 14/11/14.
+//  Created by Joshua Zhou on 14/11/25.
 //  Copyright (c) 2014年 Joshua Zhou. All rights reserved.
 //
 
-#import "NavigationController.h"
+#import "TrancluentNavigationController.h"
 
-@interface NavigationController ()
+@interface TrancluentNavigationController ()
 
 @end
 
-@implementation NavigationController
+@implementation TrancluentNavigationController
 
 //+ (void)initialize
 //{
 //    UINavigationBar *navbar = [UINavigationBar appearance];
-//    [navbar setBackgroundImage:[UIImage imageNamed:@"NavigationBar"] forBarMetrics:UIBarMetricsDefault];
+//    [navbar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
 //    [navbar setShadowImage:[[UIImage alloc] init]];
 //    [navbar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}]; // 255,252,230
 //    [navbar setTintColor:[UIColor whiteColor]];
@@ -31,7 +31,7 @@
     [super viewWillAppear:animated];
     
     UINavigationBar *navbar = [UINavigationBar appearance];
-    [navbar setBackgroundImage:[UIImage imageNamed:@"NavigationBar"] forBarMetrics:UIBarMetricsDefault];
+    [navbar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     [navbar setShadowImage:[[UIImage alloc] init]];
     [navbar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}]; // 255,252,230
     [navbar setTintColor:[UIColor whiteColor]];

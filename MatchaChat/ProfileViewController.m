@@ -47,6 +47,9 @@
 #pragma mark - 背景图放大动画
 - (void)setupUI
 {
+    self.tableView.contentInset = UIEdgeInsetsMake(-64, 0, 0, 0);
+    self.tableView.backgroundColor = [UIColor greenColor];
+    
     self.animateCount = 0;
     self.headerViewBackgroundImageView.contentSize = self.headerViewBackgroundImageView.superview.bounds.size;
     self.headerViewBackgroundImageView.maximumZoomScale = 3.0;
