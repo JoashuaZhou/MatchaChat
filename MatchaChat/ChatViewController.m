@@ -9,8 +9,9 @@
 #import "ChatViewController.h"
 #import "AppDelegate.h"
 #import <CoreData/CoreData.h>
+#import "ChatTableViewCell.h"
 
-@interface ChatViewController () <UITextFieldDelegate, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate>
+@interface ChatViewController () <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *inputTextField;
 @property (nonatomic, strong) NSFetchedResultsController *fetchResultsController;
@@ -48,6 +49,7 @@
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     [self.tableView reloadData];
+    [self scrollToBottomOfTableView];
 }
 
 - (void)viewDidLoad {
@@ -56,6 +58,9 @@
     self.title = self.headline;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    
+    self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag; // scrollView拖动时就dismiss键盘
+    [self scrollToBottomOfTableView];
 }
 
 - (void)dealloc
@@ -82,13 +87,22 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [textField resignFirstResponder];
+    XMPPMessage *message = [XMPPMessage messageWithType:@"chat" to:[XMPPJID jidWithString:@"mairunqian@joshuas-macbook-pro.local"]]; // 与presence的type一样
+    [message addBody:textField.text]; // 消息内容
+    
+    [[[self appDelegate] xmppStream] sendElement:message]; // 发送消息
+    
+    textField.text = nil;
+    
+    [self scrollToBottomOfTableView];
     return YES;
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+- (void)scrollToBottomOfTableView
 {
-    [self.inputTextField resignFirstResponder];
+    id <NSFetchedResultsSectionInfo> info = [self.fetchResultsController.sections firstObject]; // 因为我们只有一个section，所以第一个就行了
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[info numberOfObjects] - 1 inSection:0];
+    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -97,13 +111,21 @@
     return [info numberOfObjects];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (ChatTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Chat Cell" forIndexPath:indexPath];
-    
     XMPPMessageArchiving_Message_CoreDataObject *object = [self.fetchResultsController objectAtIndexPath:indexPath];
     
-    cell.textLabel.text = object.body;
+    NSString *reuseIdentifier = nil;
+    if (object.isOutgoing) {        // 判断是发出去还是受到的消息
+        reuseIdentifier = @"Others message cell";
+    } else
+    {
+        reuseIdentifier = @"My message cell";
+    }
+    
+    ChatTableViewCell *cell = [ChatTableViewCell cellForTableView:tableView reuseIdentifier:reuseIdentifier];
+    
+    cell.model = object;
     
     return cell;
 }

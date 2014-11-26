@@ -68,6 +68,7 @@
 		42202E731A19CA2000907ACC /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42202E721A19CA2000907ACC /* ProfileViewController.m */; };
 		42316A011A162B1C003E58AF /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42316A001A162B1C003E58AF /* NavigationController.m */; };
 		42316A071A162DD2003E58AF /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42316A061A162DD2003E58AF /* TabBarViewController.m */; };
+		4255662E1A257CE600F63F61 /* ChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4255662D1A257CE600F63F61 /* ChatTableViewCell.m */; };
 		426E622B1A236D1F00A52FCA /* JZNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 426E622A1A236D1F00A52FCA /* JZNotificationView.m */; };
 		427F6A871A1ADA3500B7E9DA /* ProfileSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 427F6A861A1ADA3500B7E9DA /* ProfileSettingViewController.m */; };
 		427F6A8B1A1C68E600B7E9DA /* UIImage+Joshua.m in Sources */ = {isa = PBXBuildFile; fileRef = 427F6A8A1A1C68E600B7E9DA /* UIImage+Joshua.m */; };
@@ -305,6 +306,8 @@
 		42316A001A162B1C003E58AF /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		42316A051A162DD2003E58AF /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		42316A061A162DD2003E58AF /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
+		4255662C1A257CE600F63F61 /* ChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableViewCell.h; sourceTree = "<group>"; };
+		4255662D1A257CE600F63F61 /* ChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTableViewCell.m; sourceTree = "<group>"; };
 		426E62291A236D1F00A52FCA /* JZNotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZNotificationView.h; sourceTree = "<group>"; };
 		426E622A1A236D1F00A52FCA /* JZNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZNotificationView.m; sourceTree = "<group>"; };
 		427F6A851A1ADA3500B7E9DA /* ProfileSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileSettingViewController.h; sourceTree = "<group>"; };
@@ -881,6 +884,8 @@
 		421E43971A1DDD2E00528FC1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4255662C1A257CE600F63F61 /* ChatTableViewCell.h */,
+				4255662D1A257CE600F63F61 /* ChatTableViewCell.m */,
 				421E43941A1DDA4F00528FC1 /* ContactsTableViewCell.h */,
 				421E43951A1DDA4F00528FC1 /* ContactsTableViewCell.m */,
 				421E438F1A1DD9F900528FC1 /* ContactsTableViewCell.xib */,
@@ -1754,6 +1759,7 @@
 				42316A071A162DD2003E58AF /* TabBarViewController.m in Sources */,
 				42A6C41F1A15F3D500465725 /* XMPPPing.m in Sources */,
 				42A6C40B1A15F3D500465725 /* XMPPCapabilities.xcdatamodel in Sources */,
+				4255662E1A257CE600F63F61 /* ChatTableViewCell.m in Sources */,
 				42A6C3F11A15F3D500465725 /* XMPPvCardAvatarCoreDataStorageObject.m in Sources */,
 				42A6C4001A15F3D500465725 /* XMPPPubSub.m in Sources */,
 				42126ABE1A14810D00B14BB4 /* XMPPSCRAMSHA1Authentication.m in Sources */,
