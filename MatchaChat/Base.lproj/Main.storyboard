@@ -475,7 +475,7 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="My message cell" rowHeight="50" id="w1s-xt-FRD" customClass="ChatTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Others message cell" rowHeight="50" id="w1s-xt-FRD" customClass="ChatTableViewCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w1s-xt-FRD" id="dKr-sX-h66">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -508,7 +508,7 @@
                                             <outlet property="messageLabel" destination="h42-fO-pt1" id="G6v-EM-mxW"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Others message cell" rowHeight="50" id="3KC-Oa-WdY" customClass="ChatTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="My message cell" rowHeight="50" id="3KC-Oa-WdY" customClass="ChatTableViewCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3KC-Oa-WdY" id="JXG-d5-bct">
                                             <autoresizingMask key="autoresizingMask"/>

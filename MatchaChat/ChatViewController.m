@@ -117,10 +117,10 @@
     
     NSString *reuseIdentifier = nil;
     if (object.isOutgoing) {        // 判断是发出去还是受到的消息
-        reuseIdentifier = @"Others message cell";
+        reuseIdentifier = @"My message cell";
     } else
     {
-        reuseIdentifier = @"My message cell";
+        reuseIdentifier = @"Others message cell";
     }
     
     ChatTableViewCell *cell = [ChatTableViewCell cellForTableView:tableView reuseIdentifier:reuseIdentifier];
