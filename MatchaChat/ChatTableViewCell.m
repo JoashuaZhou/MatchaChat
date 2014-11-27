@@ -12,7 +12,10 @@
 @interface ChatTableViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
-@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
+@property (weak, nonatomic) IBOutlet UIButton *messageButton;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintMessageButtonHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintMessageButtonWidth;
 
 @end
 
@@ -45,7 +48,13 @@
     }
     self.iconView.image = [UIImage imageWithData:photoData];
     
-    self.messageLabel.text = model.body;
+    CGSize textSize = [model.body boundingRectWithSize:CGSizeMake(200, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: self.messageButton.titleLabel.font} context:nil].size; // 别忘了attribute里面要填字体，这里浪费了我一个早上和一个下午
+    self.constraintMessageButtonHeight.constant = textSize.height + 32;
+    self.constraintMessageButtonWidth.constant = textSize.width + 40;
+
+    [self.messageButton setTitle:model.body forState:UIControlStateNormal];
+    
+    [self.messageButton layoutIfNeeded];
 }
 
 @end

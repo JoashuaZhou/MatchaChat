@@ -1,0 +1,43 @@
+{
+  "images" : [
+    {
+      "idiom" : "iphone",
+      "scale" : "1x"
+    },
+    {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "stretch",
+          "width" : 43,
+          "height" : 11
+        },
+        "capInsets" : {
+          "bottom" : 33,
+          "top" : 58,
+          "right" : 28,
+          "left" : 32
+        }
+      },
+      "idiom" : "iphone",
+      "filename" : "ReceiverTextNodeBkgHL@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "iphone",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "ipad",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "ipad",
+      "scale" : "2x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

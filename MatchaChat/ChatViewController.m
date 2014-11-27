@@ -130,4 +130,15 @@
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    XMPPMessageArchiving_Message_CoreDataObject *object = [self.fetchResultsController objectAtIndexPath:indexPath];
+    CGSize textSize = [object.body boundingRectWithSize:CGSizeMake(200, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15.0]} context:nil].size;
+    if (textSize.height + 32 > 70) {
+        return textSize.height + 32;
+    }
+    
+    return 70;
+}
+
 @end

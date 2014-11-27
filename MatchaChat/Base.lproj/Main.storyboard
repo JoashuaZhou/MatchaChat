@@ -299,7 +299,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="wjs-WE-vhm">
-                                <rect key="frame" x="32" y="52" width="536" height="30"/>
+                                <rect key="frame" x="32" y="96" width="536" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -307,7 +307,7 @@
                                 </connections>
                             </textField>
                             <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0U8-CT-T6v">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -471,74 +471,94 @@
                                     <constraint firstAttribute="height" constant="44" id="Vip-XF-9mr"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cNE-VK-jE6">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="51" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cNE-VK-jE6">
                                 <rect key="frame" x="0.0" y="64" width="600" height="492"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Others message cell" rowHeight="50" id="w1s-xt-FRD" customClass="ChatTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Others message cell" rowHeight="60" id="w1s-xt-FRD" customClass="ChatTableViewCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w1s-xt-FRD" id="dKr-sX-h66">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IdA-If-Pdw">
-                                                    <rect key="frame" x="8" y="7" width="35" height="35"/>
+                                                    <rect key="frame" x="8" y="8" width="35" height="35"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="35" id="DyP-xV-Kkx"/>
-                                                        <constraint firstAttribute="width" constant="35" id="kXG-vj-1R1"/>
+                                                        <constraint firstAttribute="height" constant="35" id="Gtd-xk-7VD"/>
+                                                        <constraint firstAttribute="width" constant="35" id="W6n-yf-bwt"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h42-fO-pt1">
-                                                    <rect key="frame" x="59" y="8" width="533" height="34"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="cQJ-yv-wOG">
+                                                    <rect key="frame" x="51" y="8" width="80" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="cRu-ZL-gdy"/>
+                                                        <constraint firstAttribute="width" constant="80" id="tA8-uu-UCK"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <inset key="contentEdgeInsets" minX="16" minY="2" maxX="16" maxY="8"/>
+                                                    <state key="normal" title="他的话" backgroundImage="ReceiverChatBackground">
+                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted" backgroundImage="ReceiverChatBackgroundHL"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="h42-fO-pt1" firstAttribute="leading" secondItem="IdA-If-Pdw" secondAttribute="trailing" constant="16" id="3x8-OL-W1u"/>
-                                                <constraint firstAttribute="centerY" secondItem="IdA-If-Pdw" secondAttribute="centerY" id="XnK-64-WyT"/>
-                                                <constraint firstAttribute="trailing" secondItem="h42-fO-pt1" secondAttribute="trailing" constant="8" id="cEb-tr-eSO"/>
-                                                <constraint firstItem="h42-fO-pt1" firstAttribute="top" secondItem="dKr-sX-h66" secondAttribute="top" constant="8" id="gld-Co-YWy"/>
-                                                <constraint firstItem="IdA-If-Pdw" firstAttribute="leading" secondItem="dKr-sX-h66" secondAttribute="leading" constant="8" id="nUc-yc-e2b"/>
-                                                <constraint firstAttribute="bottom" secondItem="h42-fO-pt1" secondAttribute="bottom" constant="8" id="xgu-0i-TTw"/>
+                                                <constraint firstItem="cQJ-yv-wOG" firstAttribute="leading" secondItem="IdA-If-Pdw" secondAttribute="trailing" constant="8" id="DVN-vB-j7q"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="IdA-If-Pdw" secondAttribute="bottom" constant="8" id="NeT-Lo-gip"/>
+                                                <constraint firstItem="IdA-If-Pdw" firstAttribute="top" secondItem="dKr-sX-h66" secondAttribute="top" constant="8" id="cg7-Rl-30Z"/>
+                                                <constraint firstItem="IdA-If-Pdw" firstAttribute="top" secondItem="cQJ-yv-wOG" secondAttribute="top" id="dl1-Q9-peH"/>
+                                                <constraint firstItem="IdA-If-Pdw" firstAttribute="leading" secondItem="dKr-sX-h66" secondAttribute="leading" constant="8" id="j3o-kv-joc"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="constraintMessageButtonHeight" destination="cRu-ZL-gdy" id="mXY-I3-90w"/>
+                                            <outlet property="constraintMessageButtonWidth" destination="tA8-uu-UCK" id="Ybp-Bh-BkD"/>
                                             <outlet property="iconView" destination="IdA-If-Pdw" id="Kj5-eg-vdq"/>
-                                            <outlet property="messageLabel" destination="h42-fO-pt1" id="G6v-EM-mxW"/>
+                                            <outlet property="messageButton" destination="cQJ-yv-wOG" id="JVs-ZQ-9wh"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="My message cell" rowHeight="50" id="3KC-Oa-WdY" customClass="ChatTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="My message cell" rowHeight="60" id="3KC-Oa-WdY" customClass="ChatTableViewCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3KC-Oa-WdY" id="JXG-d5-bct">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gL8-3D-SXi">
-                                                    <rect key="frame" x="557" y="7" width="35" height="35"/>
+                                                    <rect key="frame" x="557" y="8" width="35" height="35"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="35" id="S4m-Mx-Q0B"/>
-                                                        <constraint firstAttribute="width" constant="35" id="gDs-Lk-ceL"/>
+                                                        <constraint firstAttribute="width" constant="35" id="0fv-ww-Qo6"/>
+                                                        <constraint firstAttribute="height" constant="35" id="n4L-WF-zA6"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KR4-7k-IET">
-                                                    <rect key="frame" x="503.5" y="8" width="37.5" height="34"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="GLY-Ck-IYC">
+                                                    <rect key="frame" x="469" y="8" width="80" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="fcd-eY-MKd"/>
+                                                        <constraint firstAttribute="width" constant="80" id="y92-ta-EIQ"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <inset key="contentEdgeInsets" minX="16" minY="2" maxX="16" maxY="8"/>
+                                                    <state key="normal" title="我的话" backgroundImage="SenderChatBackground">
+                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted" backgroundImage="SenderChatBackgroundHL"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="KR4-7k-IET" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JXG-d5-bct" secondAttribute="leading" constant="8" id="0Se-pd-i0R"/>
-                                                <constraint firstItem="KR4-7k-IET" firstAttribute="top" secondItem="JXG-d5-bct" secondAttribute="top" constant="8" id="3jC-EB-Sra"/>
-                                                <constraint firstItem="gL8-3D-SXi" firstAttribute="leading" secondItem="KR4-7k-IET" secondAttribute="trailing" constant="16" id="ah9-cH-GBT"/>
-                                                <constraint firstAttribute="bottom" secondItem="KR4-7k-IET" secondAttribute="bottom" constant="8" id="bIi-wj-1eR"/>
-                                                <constraint firstAttribute="trailing" secondItem="gL8-3D-SXi" secondAttribute="trailing" constant="8" id="uaj-91-tuJ"/>
-                                                <constraint firstAttribute="centerY" secondItem="gL8-3D-SXi" secondAttribute="centerY" id="wAo-94-7E2"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gL8-3D-SXi" secondAttribute="bottom" constant="8" id="4HV-cb-IyX"/>
+                                                <constraint firstAttribute="trailing" secondItem="gL8-3D-SXi" secondAttribute="trailing" constant="8" id="YW9-i7-WOJ"/>
+                                                <constraint firstItem="gL8-3D-SXi" firstAttribute="top" secondItem="GLY-Ck-IYC" secondAttribute="top" id="dsh-ks-mwB"/>
+                                                <constraint firstItem="gL8-3D-SXi" firstAttribute="leading" secondItem="GLY-Ck-IYC" secondAttribute="trailing" constant="8" id="lHN-F7-DRY"/>
+                                                <constraint firstItem="gL8-3D-SXi" firstAttribute="top" secondItem="JXG-d5-bct" secondAttribute="top" constant="8" id="y0P-Eh-ryF"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="constraintMessageButtonHeight" destination="fcd-eY-MKd" id="HjP-Sk-vTm"/>
+                                            <outlet property="constraintMessageButtonWidth" destination="y92-ta-EIQ" id="dUz-8E-Cp2"/>
                                             <outlet property="iconView" destination="gL8-3D-SXi" id="99s-ob-b50"/>
-                                            <outlet property="messageLabel" destination="KR4-7k-IET" id="PaM-yx-vly"/>
+                                            <outlet property="messageButton" destination="GLY-Ck-IYC" id="nQR-Rn-PNu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -585,10 +605,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z0a-V7-paR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2988" y="610"/>
+            <point key="canvasLocation" x="3009" y="610"/>
         </scene>
     </scenes>
     <resources>
+        <image name="ReceiverChatBackground" width="38" height="52"/>
+        <image name="ReceiverChatBackgroundHL" width="51" height="51"/>
+        <image name="SenderChatBackground" width="38" height="51"/>
+        <image name="SenderChatBackgroundHL" width="60" height="53"/>
         <image name="contacts_add_friend" width="28" height="30"/>
         <image name="tabbar_contacts" width="27" height="23"/>
         <image name="tabbar_mainframe" width="25" height="23"/>
