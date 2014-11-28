@@ -33,6 +33,9 @@
         cell = [[ChatTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     }
     
+    cell.iconView.layer.cornerRadius = 5.0;
+    cell.iconView.clipsToBounds = YES;
+    
     return cell;
 }
 

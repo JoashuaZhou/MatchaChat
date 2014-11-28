@@ -10,8 +10,9 @@
 #import "AppDelegate.h"
 #import <CoreData/CoreData.h>
 #import "ChatTableViewCell.h"
+#import "JZEmotionKeyboard.h"
 
-@interface ChatViewController () <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate>
+@interface ChatViewController () <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, JZEmotionKeyboardDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *inputTextField;
 @property (nonatomic, strong) NSFetchedResultsController *fetchResultsController;
@@ -139,6 +140,30 @@
     }
     
     return 70;
+}
+
+#pragma mark - 输入工具栏按钮处理
+- (IBAction)clickEmotionButton:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    if (sender.selected) {
+        JZEmotionKeyboard *emotionKeyboard = [[JZEmotionKeyboard alloc] initWithFrame:CGRectMake(0, 0, 100, 216)];  // 从Notification知道键盘高度是216
+        emotionKeyboard.delegate = self;
+        self.inputTextField.inputView = emotionKeyboard;
+    } else {
+        self.inputTextField.inputView = nil;  // 还原键盘
+    }
+    [self.inputTextField reloadInputViews];
+    [self.inputTextField becomeFirstResponder];
+}
+
+- (void)emotionKeyboard:(JZEmotionKeyboard *)emotionKeyboard didPickEmotion:(NSString *)emotion
+{
+    self.inputTextField.text = [NSString stringWithFormat:@"%@%@", self.inputTextField.text, emotion]; // 应该依据光标位置而改变
+}
+
+- (void)emotionKeyboardDidDeleteEmotion:(JZEmotionKeyboard *)emotionKeyboard
+{
+    self.inputTextField.text = [self.inputTextField.text substringToIndex:([self.inputTextField.text length] - 1)];
 }
 
 @end

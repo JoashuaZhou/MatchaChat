@@ -169,6 +169,7 @@
 		42A6C42A1A15F3D500465725 /* XMPPMessage+XEP_0333.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A6C3C91A15F3D500465725 /* XMPPMessage+XEP_0333.m */; };
 		42A6C42B1A15F3D500465725 /* NSXMLElement+XEP_0335.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A6C3CC1A15F3D500465725 /* NSXMLElement+XEP_0335.m */; };
 		42A6C42D1A15FE1E00465725 /* LoginViewControllerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42A6C42C1A15FE1E00465725 /* LoginViewControllerView.xib */; };
+		42AA7F951A2716F200B819C1 /* JZEmotionKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AA7F941A2716F200B819C1 /* JZEmotionKeyboard.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -510,6 +511,8 @@
 		42A6C3CB1A15F3D500465725 /* NSXMLElement+XEP_0335.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSXMLElement+XEP_0335.h"; sourceTree = "<group>"; };
 		42A6C3CC1A15F3D500465725 /* NSXMLElement+XEP_0335.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSXMLElement+XEP_0335.m"; sourceTree = "<group>"; };
 		42A6C42C1A15FE1E00465725 /* LoginViewControllerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewControllerView.xib; sourceTree = "<group>"; };
+		42AA7F931A2716F200B819C1 /* JZEmotionKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZEmotionKeyboard.h; sourceTree = "<group>"; };
+		42AA7F941A2716F200B819C1 /* JZEmotionKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZEmotionKeyboard.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -889,6 +892,8 @@
 				421E43941A1DDA4F00528FC1 /* ContactsTableViewCell.h */,
 				421E43951A1DDA4F00528FC1 /* ContactsTableViewCell.m */,
 				421E438F1A1DD9F900528FC1 /* ContactsTableViewCell.xib */,
+				42AA7F931A2716F200B819C1 /* JZEmotionKeyboard.h */,
+				42AA7F941A2716F200B819C1 /* JZEmotionKeyboard.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1649,6 +1654,7 @@
 				42A6C3D51A15F3D500465725 /* XMPPRosterCoreDataStorage.m in Sources */,
 				42A6C3E31A15F3D500465725 /* XMPPRoomCoreDataStorage.m in Sources */,
 				42126A921A147FCA00B14BB4 /* DDXMLDocument.m in Sources */,
+				42AA7F951A2716F200B819C1 /* JZEmotionKeyboard.m in Sources */,
 				42A6C3D71A15F3D500465725 /* XMPPResourceMemoryStorageObject.m in Sources */,
 				42126A761A147E8300B14BB4 /* DDLog.m in Sources */,
 				42A6C4021A15F3D500465725 /* XMPPIQ+XEP_0066.m in Sources */,
