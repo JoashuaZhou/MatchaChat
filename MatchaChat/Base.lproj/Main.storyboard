@@ -482,6 +482,9 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted" image="InputView_MoreHL"/>
+                                        <connections>
+                                            <action selector="clickMoreButton:" destination="Lda-uP-F4P" eventType="touchUpInside" id="uF0-s5-3XC"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tiu-H3-6qR" userLabel="表情按钮">
                                         <rect key="frame" x="48" y="0.0" width="44" height="44"/>

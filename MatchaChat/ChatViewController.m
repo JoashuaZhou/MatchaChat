@@ -11,8 +11,9 @@
 #import <CoreData/CoreData.h>
 #import "ChatTableViewCell.h"
 #import "JZEmotionKeyboard.h"
+#import "JZFunctionPickerView.h"
 
-@interface ChatViewController () <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, JZEmotionKeyboardDelegate>
+@interface ChatViewController () <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, JZEmotionKeyboardDelegate, JZFunctionPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *inputTextField;
 @property (nonatomic, strong) NSFetchedResultsController *fetchResultsController;
@@ -156,6 +157,19 @@
     [self.inputTextField becomeFirstResponder];
 }
 
+- (IBAction)clickMoreButton:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    if (sender.selected) {
+        JZFunctionPickerView *pickerView = [[JZFunctionPickerView alloc] initWithFrame:CGRectMake(0, 0, 0, 216)];
+        pickerView.delegate = self;
+        self.inputTextField.inputView = pickerView;
+    } else {
+        self.inputTextField.inputView = nil;
+    }
+    [self.inputTextField reloadInputViews];
+    [self.inputTextField becomeFirstResponder];
+}
+
 - (void)emotionKeyboard:(JZEmotionKeyboard *)emotionKeyboard didPickEmotion:(NSString *)emotion
 {
     self.inputTextField.text = [NSString stringWithFormat:@"%@%@", self.inputTextField.text, emotion]; // 应该依据光标位置而改变
@@ -164,6 +178,43 @@
 - (void)emotionKeyboardDidDeleteEmotion:(JZEmotionKeyboard *)emotionKeyboard
 {
     self.inputTextField.text = [self.inputTextField.text substringToIndex:([self.inputTextField.text length] - 1)];
+}
+
+- (void)functionPickerView:(JZFunctionPickerView *)functionPickerView didPickFunction:(JZFunctionPickerViewFunctionType)type
+{
+    switch (type) {
+        case JZFunctionPickerViewFunctionTypePhoto:
+            [self pickImage];
+            break;
+    }
+}
+
+#pragma mark - UIImagePickerViewDelegate
+- (void)pickImage
+{
+    UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
+    [actionSheetController addAction:[UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        ipc.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentViewController:ipc animated:YES completion:nil];
+    }]];
+    [actionSheetController addAction:[UIAlertAction actionWithTitle:@"从照片中选取" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        ipc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:ipc animated:YES completion:nil];
+    }]];
+    [actionSheetController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    ipc.delegate = self;
+    [self presentViewController:actionSheetController animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
