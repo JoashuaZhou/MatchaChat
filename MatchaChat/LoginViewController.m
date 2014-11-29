@@ -115,12 +115,14 @@
 //    CGRect keyboardBeginRect = [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
 //    CGRect keyboardEndRect = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
-    self.view.transform = CGAffineTransformMakeTranslation(0, -adaptKeyboardHeight);
+    self.logoTextField.transform = CGAffineTransformTranslate(self.logoTextField.transform, 0, -50);
+    self.loginView.transform = CGAffineTransformMakeTranslation(0, -80);
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification
 {
-    self.view.transform = CGAffineTransformIdentity;
+    self.logoTextField.transform = CGAffineTransformIdentity;
+    self.loginView.transform = CGAffineTransformIdentity;
 }
 
 /*
