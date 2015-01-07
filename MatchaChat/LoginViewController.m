@@ -9,16 +9,19 @@
 #import "LoginViewController.h"
 #import "AppDelegate.h"
 #import "JZNotificationView.h"
+#import "JNWSpringAnimation.h"
+#import <pop/POP.h>
 
-#define adaptKeyboardHeight 120
+#define adaptKeyboardHeight         120
+#define translationDistanceFactor   8
 @interface LoginViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *accountTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
-@property (weak, nonatomic) IBOutlet UITextField *serverNameTextField;
-@property (weak, nonatomic) IBOutlet UILabel *errorMessageTextField;
+@property (weak, nonatomic) IBOutlet UILabel *errorMessageLabel;
+
 @property (weak, nonatomic) IBOutlet UIView *loginView;
-@property (weak, nonatomic) IBOutlet UILabel *logoTextField;
+@property (weak, nonatomic) IBOutlet UIImageView *logoView;
 @property (weak, nonatomic) IBOutlet UILabel *declarationTextField;
 
 @end
@@ -44,7 +47,7 @@
 - (void)setupUI
 {
     [UIView animateWithDuration:1.0 animations:^{
-        self.logoTextField.transform = CGAffineTransformMakeTranslation(0, -130);
+        self.logoView.alpha = 1.0;
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.7 animations:^{
             self.loginView.alpha = 1.0;
@@ -58,14 +61,14 @@
 }
 
 - (IBAction)loginOrRegister:(UIButton *)sender {
-    if ([self.accountTextField.text isEqualToString:@""] || [self.passwordTextField.text isEqualToString:@""] || [self.serverNameTextField.text isEqualToString:@""]) {
+    if ([self.accountTextField.text isEqualToString:@""] || [self.passwordTextField.text isEqualToString:@""]) {
         [self showErrorMessage];
         return;
     }
     
     [self appDelegate].registration = sender.tag ? YES : NO;
     
-    [[self appDelegate] connectWithAccountName:self.accountTextField.text Password:self.passwordTextField.text ServerName:self.serverNameTextField.text Success:^(NSString *message) {
+    [[self appDelegate] connectWithAccountName:self.accountTextField.text Password:self.passwordTextField.text ServerName:@"xx" Success:^(NSString *message) {
         NSLog(@"%@", message);
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         UITabBarController *tabBarController = [storyboard instantiateInitialViewController];
@@ -94,14 +97,14 @@
 - (void)showErrorMessage
 {
     [JZNotificationView showFailureWithHeadline:@"登录失败" message:@"请检查一下你的用户和密码！"];
-    self.errorMessageTextField.hidden = NO;
+    self.errorMessageLabel.hidden = NO;
     
     CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
     animation.keyPath = @"transform.translation.x";
     animation.values = @[@(-8), @(0), @(-8)];
     animation.repeatCount = 5;
     animation.duration = 0.1;
-    [self.errorMessageTextField.layer addAnimation:animation forKey:nil];
+    [self.errorMessageLabel.layer addAnimation:animation forKey:nil];
 }
 
 #pragma mark - 通知中心 & 键盘弹出处理
@@ -115,13 +118,15 @@
 //    CGRect keyboardBeginRect = [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
 //    CGRect keyboardEndRect = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
-    self.logoTextField.transform = CGAffineTransformTranslate(self.logoTextField.transform, 0, -50);
-    self.loginView.transform = CGAffineTransformMakeTranslation(0, -80);
+//    self.logoView.transform = CGAffineTransformTranslate(self.logoView.transform, 0, -50);
+    CGFloat translationDistance = self.view.bounds.size.height / translationDistanceFactor;
+//    NSLog(@"%f", translationDistance);
+    self.loginView.transform = CGAffineTransformMakeTranslation(0, -translationDistance);
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification
 {
-    self.logoTextField.transform = CGAffineTransformIdentity;
+//    self.logoView.transform = CGAffineTransformIdentity;
     self.loginView.transform = CGAffineTransformIdentity;
 }
 
