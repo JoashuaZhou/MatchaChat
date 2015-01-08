@@ -49,7 +49,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setupUI];
 //    [self setupSeperator];
+}
+
+- (void)setupUI
+{
+    // TableView的背景
+    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Login_Background"]];
+    [self.tableView setBackgroundView:backgroundImageView];
 }
 
 - (void)setupSeperator

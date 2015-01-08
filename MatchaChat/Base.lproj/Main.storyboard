@@ -26,6 +26,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="联系人" id="1OW-Mp-Mb7">
+                        <barButtonItem key="leftBarButtonItem" image="Contacts_ContactsIcon" id="RPv-kS-hZi">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="contacts_add_friend" id="yBm-PS-q5r">
                             <connections>
                                 <action selector="addContact:" destination="hcI-QT-zYl" id="fqh-eQ-8h8"/>
@@ -659,6 +662,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Contacts_ContactsIcon" width="29" height="19"/>
         <image name="InputView_Emotion" width="35" height="35"/>
         <image name="InputView_EmotionHL" width="35" height="35"/>
         <image name="InputView_More" width="35" height="35"/>

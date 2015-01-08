@@ -95,6 +95,9 @@
 - (IBAction)loginOrRegister:(UIButton *)sender {
     sender.userInteractionEnabled = NO;
     
+    [self.accountTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
+    
     [self hideErrorLabel];
     
     if ([self.accountTextField.text isEqualToString:@""] || [self.passwordTextField.text isEqualToString:@""]) {
@@ -108,13 +111,27 @@
     
     [[self appDelegate] connectWithAccountName:self.accountTextField.text Password:self.passwordTextField.text ServerName:@"xx" Success:^(NSString *message) {
         NSLog(@"%@", message);
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UITabBarController *tabBarController = [storyboard instantiateInitialViewController];
-        [self.view insertSubview:tabBarController.view belowSubview:self.view]; // 先弄个tabbarController.view在本控制器是为了切换时动画的连续，不然可能不连续，因为我们直接把tabbarController设为window.rootViewController了
-        // 两个viewController切换时使用转场动画
-        [UIView transitionFromView:self.view toView:tabBarController.view duration:1.2 options:UIViewAnimationOptionTransitionCurlUp completion:^(BOOL finished) {
+        
+        // 动画部分
+        CGFloat initialDelay = 0.5f;
+        CGFloat i = 0;
+        for (UIView *view in self.loginView.subviews) {
+            [self transitionAnimationWithView:view delay:initialDelay + i];
+            i += 0.1f;
+        }
+        [UIView animateWithDuration:0.25 delay:initialDelay + i options:0 animations:^{
+            self.declarationTextField.alpha = 0;
+            self.declarationTextField.transform = CGAffineTransformMakeScale(0.1, 0.1);
+        } completion:^(BOOL finished) {
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            UITabBarController *tabBarController = [storyboard instantiateInitialViewController];
+            //        [self.view insertSubview:tabBarController.view belowSubview:self.view]; // 先弄个tabbarController.view在本控制器是为了切换时动画的连续，不然可能不连续，因为我们直接把tabbarController设为window.rootViewController了
+            //        // 两个viewController切换时使用转场动画
+            //        [UIView transitionFromView:self.view toView:tabBarController.view duration:1.2 options:UIViewAnimationOptionTransitionCurlUp completion:^(BOOL finished) {
             [[self appDelegate].window setRootViewController:tabBarController];
+            //        }];
         }];
+        
 //        CATransition *animation = [CATransition animation];
 //        animation.type = @"rippleEffect";
 //        animation.duration = 5.0;
@@ -123,6 +140,18 @@
     } Failure:^(NSString *message) {
         [self showErrorMessage];
     }];
+}
+
+- (void)transitionAnimationWithView:(UIView *)animatedView delay:(CGFloat)delayInterval
+{
+    [UIView animateWithDuration:0.25 delay:delayInterval options:0 animations:^{
+        animatedView.alpha = 0;
+        animatedView.transform = CGAffineTransformMakeScale(0.1, 0.1);
+    } completion:nil];
+    
+//    POPBasicAnimation *scaleAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+//    scaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(0, 0)];
+//    [animatedView.layer pop_addAnimation:scaleAnimation forKey:nil];
 }
 
 //- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
@@ -211,6 +240,7 @@
     } else {
         [self loginOrRegister:self.loginButton];
     }
+
     return YES;
 }
 
