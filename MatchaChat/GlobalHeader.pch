@@ -8,4 +8,7 @@
 
 #ifdef __OBJC__
 
+#import "JNWSpringAnimation.h"
+#import <pop/POP.h>
+
 #endif

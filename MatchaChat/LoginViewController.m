@@ -9,8 +9,6 @@
 #import "LoginViewController.h"
 #import "AppDelegate.h"
 #import "JZNotificationView.h"
-#import "JNWSpringAnimation.h"
-#import <pop/POP.h>
 
 #define adaptKeyboardHeight         120
 #define translationDistanceFactor   8
@@ -23,6 +21,11 @@
 @property (weak, nonatomic) IBOutlet UIView *loginView;
 @property (weak, nonatomic) IBOutlet UIImageView *logoView;
 @property (weak, nonatomic) IBOutlet UILabel *declarationTextField;
+
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UIView *accountView;
+@property (weak, nonatomic) IBOutlet UIView *passwordView;
 
 @end
 
@@ -46,23 +49,58 @@
 
 - (void)setupUI
 {
-    [UIView animateWithDuration:1.0 animations:^{
-        self.logoView.alpha = 1.0;
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.7 animations:^{
-            self.loginView.alpha = 1.0;
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.5 animations:^{
-                self.declarationTextField.alpha = 1.0;
-                self.declarationTextField.transform = CGAffineTransformMakeTranslation(0, -16);
-            }];
-        }];
-    }];
+    self.errorMessageLabel.layer.transform = CATransform3DMakeScale(0.5f, 0.5f, 1.0f);
+    self.errorMessageLabel.layer.opacity = 0;
+    
+    // 要这样textfield的placeholder才会留给左边一些间隙
+    self.accountTextField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 0)];
+    self.accountTextField.leftViewMode = UITextFieldViewModeAlways;
+    self.passwordTextField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 0)];
+    self.passwordTextField.leftViewMode = UITextFieldViewModeAlways;
+    
+//    [UIView animateWithDuration:1.0 animations:^{
+//        self.logoView.alpha = 1.0;
+//    } completion:^(BOOL finished) {
+//        [UIView animateWithDuration:0.7 animations:^{
+//            self.loginView.alpha = 1.0;
+//        } completion:^(BOOL finished) {
+//            [UIView animateWithDuration:0.5 animations:^{
+//                self.declarationTextField.alpha = 1.0;
+//                self.declarationTextField.transform = CGAffineTransformMakeTranslation(0, -16);
+//            }];
+//        }];
+//    }];
+    
+    CGFloat initialDelay = 0.5f;
+    CGFloat i = 0;
+    for (UIView *view in self.loginView.subviews) {
+        if ([view isEqual:self.userActivity] || [view isEqual:self.errorMessageLabel]) {
+            continue;
+        }
+        [self setupUIAnimationWithView:view delay:initialDelay + i];
+        i += 0.1f;
+    }
+    [self setupUIAnimationWithView:self.declarationTextField delay:initialDelay + i];
+}
+
+- (void)setupUIAnimationWithView:(UIView *)animatedView delay:(CGFloat)delayInterval
+{
+    animatedView.transform = CGAffineTransformMakeTranslation(0, self.loginButton.frame.origin.y);
+    [UIView animateWithDuration:2.5 delay:delayInterval usingSpringWithDamping:0.5 initialSpringVelocity:0 options:0 animations:^{
+        animatedView.transform = CGAffineTransformIdentity;
+        animatedView.alpha = 1.0f;
+    } completion:nil];
 }
 
 - (IBAction)loginOrRegister:(UIButton *)sender {
+    sender.userInteractionEnabled = NO;
+    
+    [self hideErrorLabel];
+    
     if ([self.accountTextField.text isEqualToString:@""] || [self.passwordTextField.text isEqualToString:@""]) {
-        [self showErrorMessage];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self showErrorMessage];
+        });
         return;
     }
     
@@ -96,15 +134,51 @@
 
 - (void)showErrorMessage
 {
-    [JZNotificationView showFailureWithHeadline:@"登录失败" message:@"请检查一下你的用户和密码！"];
-    self.errorMessageLabel.hidden = NO;
+//    [JZNotificationView showFailureWithHeadline:@"登录失败" message:@"请检查一下你的用户和密码！"];
+//    self.errorMessageLabel.hidden = NO;
+//    
+//    CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
+//    animation.keyPath = @"transform.translation.x";
+//    animation.values = @[@(-8), @(0), @(-8)];
+//    animation.repeatCount = 5;
+//    animation.duration = 0.1;
+//    [self.errorMessageLabel.layer addAnimation:animation forKey:nil];
     
-    CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
-    animation.keyPath = @"transform.translation.x";
-    animation.values = @[@(-8), @(0), @(-8)];
-    animation.repeatCount = 5;
-    animation.duration = 0.1;
-    [self.errorMessageLabel.layer addAnimation:animation forKey:nil];
+    POPSpringAnimation *positionXAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionX];
+    positionXAnimation.velocity = @2000;
+    positionXAnimation.springBounciness = 20;
+    [self.loginButton.layer pop_addAnimation:positionXAnimation forKey:@"layerPositionXAnimation"];
+    
+    self.errorMessageLabel.layer.opacity = 1.0f;
+    POPSpringAnimation *scaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+    scaleAnimation.springBounciness = 18;
+    scaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.0f, 1.0f)];
+    [self.errorMessageLabel.layer pop_addAnimation:scaleAnimation forKey:@"layerScaleXYAnimation"];
+    
+    POPSpringAnimation *positionYAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
+    positionYAnimation.springBounciness = 12;
+    positionYAnimation.toValue = @(self.loginButton.layer.position.y + self.loginButton.intrinsicContentSize.height);
+    [self.errorMessageLabel.layer pop_addAnimation:positionYAnimation forKey:@"layerPositionYAnimation"];
+    
+    self.loginButton.userInteractionEnabled = YES;
+    [self.activityIndicator stopAnimating];
+}
+
+- (void)hideErrorLabel
+{
+    POPBasicAnimation *scaleAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+    scaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(0.5f, 0.5f)];
+    [self.errorMessageLabel.layer pop_addAnimation:scaleAnimation forKey:nil];
+    
+    POPBasicAnimation *positionYAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPositionY];
+    positionYAnimation.toValue = @(self.loginButton.layer.position.y);
+    [self.errorMessageLabel.layer pop_addAnimation:positionYAnimation forKey:nil];
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        self.errorMessageLabel.layer.opacity = 0;
+    } completion:^(BOOL finished) {
+        [self.activityIndicator startAnimating];
+    }];
 }
 
 #pragma mark - 通知中心 & 键盘弹出处理
@@ -128,6 +202,16 @@
 {
 //    self.logoView.transform = CGAffineTransformIdentity;
     self.loginView.transform = CGAffineTransformIdentity;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField == self.accountTextField) {
+        [self.passwordTextField becomeFirstResponder];
+    } else {
+        [self loginOrRegister:self.loginButton];
+    }
+    return YES;
 }
 
 /*
